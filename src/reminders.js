@@ -57,7 +57,7 @@ export function createDayReminders({
     /** Re-check after notes change for today. */
     refresh() {
       if (!running || !userId) return;
-      void tick({ skipScheduleOnly: false, catchUpOnly: true });
+      void tick({ catchUpOnly: true });
     },
   };
 
