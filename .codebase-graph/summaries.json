@@ -709,23 +709,33 @@
   },
   {
    "id": "function:src/main.js:header",
-   "text": "header",
+   "text": "Month title, adjacent year, and lock control.",
    "source_nodes": [
     "function:src/main.js:header"
    ],
-   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "commit_sha": "eafac16e6969e4f2726cb9cc24a5a4a7bf6b658f",
    "summary_version": 1,
-   "enriched": false
+   "enriched": true
   },
   {
    "id": "function:src/main.js:lockButton",
-   "text": "lockButton",
+   "text": "Renders a padlock icon that shows lock or unlock on hover.",
    "source_nodes": [
     "function:src/main.js:lockButton"
    ],
-   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "commit_sha": "eafac16e6969e4f2726cb9cc24a5a4a7bf6b658f",
    "summary_version": 1,
-   "enriched": false
+   "enriched": true
+  },
+  {
+   "id": "function:src/main.js:onLockClick",
+   "text": "Locks the session or focuses the password field when already locked.",
+   "source_nodes": [
+    "function:src/main.js:onLockClick"
+   ],
+   "commit_sha": "eafac16e6969e4f2726cb9cc24a5a4a7bf6b658f",
+   "summary_version": 1,
+   "enriched": true
   },
   {
    "id": "function:src/main.js:navButton",
@@ -799,13 +809,13 @@
   },
   {
    "id": "function:src/main.js:noteDialog",
-   "text": "noteDialog",
+   "text": "Centered notes panel over a dimmed calendar.",
    "source_nodes": [
     "function:src/main.js:noteDialog"
    ],
-   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "commit_sha": "eafac16e6969e4f2726cb9cc24a5a4a7bf6b658f",
    "summary_version": 1,
-   "enriched": false
+   "enriched": true
   },
   {
    "id": "function:src/main.js:noteItem",

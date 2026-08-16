@@ -18,6 +18,7 @@
 | `readMonth` / `writeMonth` | `lib/store.js:24` / `:35` | Month JSON in a blob store, isolated by user | used by `lib/api.js` |
 | `logger` | `lib/logger.js:13` | JSON logs with a scope | used by API and UI |
 | `api` | `src/client.js:34` | Browser fetch helper | used by `src/main.js` |
-| `boot` | `src/main.js:32` | Session check, current month, first paint | page entry |
-| `lockButton` | `src/main.js:99` | Ends the session and hides notes | used by `header` |
+| `boot` | `src/main.js:37` | Session check, current month, first paint | page entry |
+| `lockButton` | `src/main.js:104` | Lock/unlock icon with hover label | used by `header` |
+| `onLockClick` | `src/main.js:126` | Ends the session, or focuses the password field | used by `lockButton` |
 | Netlify function | `netlify/functions/api.js:4` | Production `/api/*` entry using Netlify Blobs | calls `handleRequest` |

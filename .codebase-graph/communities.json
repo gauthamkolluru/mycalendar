@@ -58,6 +58,7 @@
     "function:src/main.js:loadMonth",
     "function:src/main.js:sheet",
     "function:src/main.js:lockButton",
+    "function:src/main.js:onLockClick",
     "function:src/main.js:grid",
     "function:src/main.js:dayCell",
     "function:src/main.js:onLogin",

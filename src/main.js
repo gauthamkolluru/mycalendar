@@ -15,6 +15,10 @@ import {
 import "./styles.css";
 
 const log = logger("ui");
+const LOCK_ICON =
+  '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+const UNLOCK_ICON =
+  '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.2-2.8"/></svg>';
 const today = todayParts();
 const state = {
   year: today.year,
@@ -88,41 +92,50 @@ function header() {
   title.className = "month";
   title.textContent = monthTitle(state.month);
 
-  monthWrap.append(prev, title, next);
-
   const year = document.createElement("p");
   year.className = "year";
   year.textContent = String(state.year);
 
-  headerEl.append(monthWrap, year);
-  if (state.authed) headerEl.append(lockButton());
+  monthWrap.append(prev, title, year, next);
+  headerEl.append(monthWrap, lockButton());
   return headerEl;
 }
 
 function lockButton() {
   const wrap = document.createElement("div");
   wrap.className = "lock-wrap";
-  if (state.user?.name) {
+  if (state.authed && state.user?.name) {
     const who = document.createElement("span");
     who.className = "who";
     who.textContent = state.user.name;
     wrap.append(who);
   }
+  const unlocked = state.authed;
+  const action = unlocked ? "lock" : "unlock";
   const button = document.createElement("button");
   button.type = "button";
   button.className = "lock";
-  button.textContent = "Lock";
-  button.addEventListener("click", async () => {
-    await api("/api/session", { method: "DELETE" });
-    state.authed = false;
-    state.user = null;
-    state.tasks = {};
-    state.selected = null;
-    state.status = "";
-    render();
-  });
+  button.dataset.tip = action;
+  button.setAttribute("aria-label", action);
+  button.innerHTML = unlocked ? UNLOCK_ICON : LOCK_ICON;
+  button.addEventListener("click", onLockClick);
   wrap.append(button);
   return wrap;
+}
+
+async function onLockClick() {
+  if (!state.authed) {
+    const input = document.getElementById("password");
+    if (input) input.focus();
+    return;
+  }
+  await api("/api/session", { method: "DELETE" });
+  state.authed = false;
+  state.user = null;
+  state.tasks = {};
+  state.selected = null;
+  state.status = "";
+  render();
 }
 
 function navButton(label, text, delta) {
@@ -267,11 +280,23 @@ async function onLogin(event) {
 }
 
 function noteDialog() {
-  const dialog = document.createElement("dialog");
+  const scrim = document.createElement("div");
+  scrim.className = "scrim";
+  scrim.addEventListener("click", (event) => {
+    if (event.target === scrim) {
+      state.selected = null;
+      render();
+    }
+  });
+
+  const dialog = document.createElement("div");
   dialog.className = "panel notes-panel";
-  dialog.setAttribute("open", "");
+  dialog.setAttribute("role", "dialog");
+  dialog.setAttribute("aria-modal", "true");
+  dialog.setAttribute("aria-labelledby", "note-heading");
 
   const heading = document.createElement("h2");
+  heading.id = "note-heading";
   heading.textContent = formatHeading(state.selected);
 
   const holiday = holidayName(state.selected);
@@ -319,7 +344,8 @@ function noteDialog() {
 
   dialog.append(heading, close, list, form);
   if (state.status) dialog.append(statusLine(state.status));
-  return dialog;
+  scrim.append(dialog);
+  return scrim;
 }
 
 function noteItem(task) {

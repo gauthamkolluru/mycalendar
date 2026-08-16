@@ -451,133 +451,140 @@
    "id": "function:src/main.js:boot",
    "type": "function",
    "name": "boot",
-   "path": "src/main.js:32",
+   "path": "src/main.js:37",
    "exported": false
   },
   {
    "id": "function:src/main.js:loadMonth",
    "type": "function",
    "name": "loadMonth",
-   "path": "src/main.js:43",
+   "path": "src/main.js:49",
    "exported": false
   },
   {
    "id": "function:src/main.js:render",
    "type": "function",
    "name": "render",
-   "path": "src/main.js:59",
+   "path": "src/main.js:66",
    "exported": false
   },
   {
    "id": "function:src/main.js:sheet",
    "type": "function",
    "name": "sheet",
-   "path": "src/main.js:65",
+   "path": "src/main.js:72",
    "exported": false
   },
   {
    "id": "function:src/main.js:header",
    "type": "function",
    "name": "header",
-   "path": "src/main.js:75",
+   "path": "src/main.js:82",
    "exported": false
   },
   {
    "id": "function:src/main.js:lockButton",
    "type": "function",
    "name": "lockButton",
-   "path": "src/main.js:99",
+   "path": "src/main.js:104",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:onLockClick",
+   "type": "function",
+   "name": "onLockClick",
+   "path": "src/main.js:126",
    "exported": false
   },
   {
    "id": "function:src/main.js:navButton",
    "type": "function",
    "name": "navButton",
-   "path": "src/main.js:115",
+   "path": "src/main.js:141",
    "exported": false
   },
   {
    "id": "function:src/main.js:weekdays",
    "type": "function",
    "name": "weekdays",
-   "path": "src/main.js:133",
+   "path": "src/main.js:159",
    "exported": false
   },
   {
    "id": "function:src/main.js:grid",
    "type": "function",
    "name": "grid",
-   "path": "src/main.js:151",
+   "path": "src/main.js:177",
    "exported": false
   },
   {
    "id": "function:src/main.js:dayCell",
    "type": "function",
    "name": "dayCell",
-   "path": "src/main.js:161",
+   "path": "src/main.js:187",
    "exported": false
   },
   {
    "id": "function:src/main.js:openDay",
    "type": "function",
    "name": "openDay",
-   "path": "src/main.js:187",
+   "path": "src/main.js:213",
    "exported": false
   },
   {
    "id": "function:src/main.js:loginDialog",
    "type": "function",
    "name": "loginDialog",
-   "path": "src/main.js:203",
+   "path": "src/main.js:229",
    "exported": false
   },
   {
    "id": "function:src/main.js:onLogin",
    "type": "function",
    "name": "onLogin",
-   "path": "src/main.js:235",
+   "path": "src/main.js:261",
    "exported": false
   },
   {
    "id": "function:src/main.js:noteDialog",
    "type": "function",
    "name": "noteDialog",
-   "path": "src/main.js:255",
+   "path": "src/main.js:282",
    "exported": false
   },
   {
    "id": "function:src/main.js:noteItem",
    "type": "function",
    "name": "noteItem",
-   "path": "src/main.js:311",
+   "path": "src/main.js:348",
    "exported": false
   },
   {
    "id": "function:src/main.js:onAddNote",
    "type": "function",
    "name": "onAddNote",
-   "path": "src/main.js:325",
+   "path": "src/main.js:362",
    "exported": false
   },
   {
    "id": "function:src/main.js:onRemoveNote",
    "type": "function",
    "name": "onRemoveNote",
-   "path": "src/main.js:345",
+   "path": "src/main.js:382",
    "exported": false
   },
   {
    "id": "function:src/main.js:formatHeading",
    "type": "function",
    "name": "formatHeading",
-   "path": "src/main.js:361",
+   "path": "src/main.js:398",
    "exported": false
   },
   {
    "id": "function:src/main.js:statusLine",
    "type": "function",
    "name": "statusLine",
-   "path": "src/main.js:371",
+   "path": "src/main.js:408",
    "exported": false
   },
   {
@@ -1250,6 +1257,14 @@
   },
   {
    "source": "file:src/main.js",
+   "target": "function:src/main.js:onLockClick",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
    "target": "function:src/main.js:navButton",
    "type": "CONTAINS",
    "weight": 1,
@@ -1729,7 +1744,7 @@
    "metadata": {}
   },
   {
-   "source": "function:src/main.js:lockButton",
+   "source": "function:src/main.js:onLockClick",
    "target": "function:src/client.js:api",
    "type": "CALLS",
    "weight": 5,
@@ -2073,6 +2088,14 @@
    "target": "function:lib/api.js:handleRequest",
    "type": "DEPENDS_ON",
    "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:lockButton",
+   "target": "function:src/main.js:onLockClick",
+   "type": "CALLS",
+   "weight": 5,
    "inferred": false,
    "metadata": {}
   }
