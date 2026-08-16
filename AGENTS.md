@@ -14,4 +14,4 @@ When adding **another** new project under `1-projects`, add **`CLAUDE.md`** and 
 
 ## mycalendar
 
-Personal month-page calendar. Keep the UI paper-like. Do not add accounts, sharing, or paid services unless asked. Persistence is Netlify Blobs; auth is a single password in environment variables.
+Personal month-page calendar. Keep the UI paper-like. Two password-gated calendars (`gautham` and `wife`) with isolated notes. Do not add accounts, sharing, or paid services unless asked. Persistence is Netlify Blobs.

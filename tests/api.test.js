@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { handleRequest, memoryBlobStore } from "../lib/api.js";
 
 const ENV = {
-  CALENDAR_PASSWORD: "desk-calendar",
+  CALENDAR_GAUTHAM_PASSWORD: "desk-calendar",
+  CALENDAR_WIFE_PASSWORD: "wife-calendar",
   CALENDAR_SESSION_SECRET: "s".repeat(32),
 };
 
@@ -16,9 +17,9 @@ function request(method, path, { body, cookie } = {}) {
   });
 }
 
-async function login(store) {
+async function login(store, password = ENV.CALENDAR_GAUTHAM_PASSWORD) {
   const response = await handleRequest(
-    request("POST", "/api/session", { body: { password: ENV.CALENDAR_PASSWORD } }),
+    request("POST", "/api/session", { body: { password } }),
     ENV,
     store,
   );
@@ -35,7 +36,7 @@ describe("handleRequest", () => {
         {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ password: ENV.CALENDAR_PASSWORD }),
+          body: JSON.stringify({ password: ENV.CALENDAR_GAUTHAM_PASSWORD }),
         },
       ),
       ENV,
@@ -186,6 +187,64 @@ describe("handleRequest", () => {
     );
     expect(response.status).toBe(204);
     expect(response.headers.get("set-cookie")).toMatch(/Max-Age=0/);
+  });
+
+  it("keeps each person's notes private to their password", async () => {
+    const store = memoryBlobStore();
+    const gautham = await login(store, ENV.CALENDAR_GAUTHAM_PASSWORD);
+    const wife = await login(store, ENV.CALENDAR_WIFE_PASSWORD);
+
+    await handleRequest(
+      request("POST", "/api/tasks", {
+        body: { date: "2025-10-31", text: "gautham only" },
+        cookie: `cal_session=${gautham}`,
+      }),
+      ENV,
+      store,
+    );
+    await handleRequest(
+      request("POST", "/api/tasks", {
+        body: { date: "2025-10-31", text: "wife only" },
+        cookie: `cal_session=${wife}`,
+      }),
+      ENV,
+      store,
+    );
+
+    const gauthamMonth = await handleRequest(
+      request("GET", "/api/tasks?month=2025-10", {
+        cookie: `cal_session=${gautham}`,
+      }),
+      ENV,
+      store,
+    ).then((response) => response.json());
+    const wifeMonth = await handleRequest(
+      request("GET", "/api/tasks?month=2025-10", {
+        cookie: `cal_session=${wife}`,
+      }),
+      ENV,
+      store,
+    ).then((response) => response.json());
+
+    expect(gauthamMonth.tasks["2025-10-31"].map((task) => task.text)).toEqual([
+      "gautham only",
+    ]);
+    expect(wifeMonth.tasks["2025-10-31"].map((task) => task.text)).toEqual([
+      "wife only",
+    ]);
+  });
+
+  it("rejects matching passwords as a broken configuration", async () => {
+    const response = await handleRequest(
+      request("POST", "/api/session", { body: { password: "same" } }),
+      {
+        CALENDAR_GAUTHAM_PASSWORD: "same",
+        CALENDAR_WIFE_PASSWORD: "same",
+        CALENDAR_SESSION_SECRET: "s".repeat(32),
+      },
+      memoryBlobStore(),
+    );
+    expect(response.status).toBe(503);
   });
 
   it("rate-limits repeated failed logins from the same client", async () => {

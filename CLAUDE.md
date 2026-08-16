@@ -19,4 +19,4 @@ Personal desk-calendar web app. Opens on the current month. Notes are stored per
 - Tests: `npm test`
 - Local app: `npx netlify-cli dev` (needed for the API and Blobs)
 - Production host: Netlify free tier at `calendar.thegauthams.com`
-- Required env: `CALENDAR_PASSWORD`, `CALENDAR_SESSION_SECRET` (32+ characters)
+- Required env: `CALENDAR_GAUTHAM_PASSWORD`, `CALENDAR_WIFE_PASSWORD`, `CALENDAR_SESSION_SECRET` (32+ characters)

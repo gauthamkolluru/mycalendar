@@ -9,7 +9,7 @@ Hosting uses the same Netlify account as [thegauthams.com](https://thegauthams.c
 - The page is the month. Other-month dates are faded.
 - Click a square to add or remove notes.
 - Use `‹` `›` to turn the page.
-- Sign in with the calendar password. Notes never load without it.
+- Sign in with your password. Each person sees only their own notes.
 
 ## Local
 
@@ -17,7 +17,7 @@ Hosting uses the same Netlify account as [thegauthams.com](https://thegauthams.c
 cp .env.example .env
 ```
 
-Set `CALENDAR_PASSWORD` and a 32+ character `CALENDAR_SESSION_SECRET`. Then:
+Set `CALENDAR_GAUTHAM_PASSWORD`, `CALENDAR_WIFE_PASSWORD`, and a 32+ character `CALENDAR_SESSION_SECRET`. Then:
 
 ```bash
 npm install
@@ -35,7 +35,8 @@ After a push to `main`, Netlify builds with `npm test && npm run build` and publ
 
 Site environment variables (Site configuration → Environment variables):
 
-- `CALENDAR_PASSWORD` — the password you will type
+- `CALENDAR_GAUTHAM_PASSWORD` — Gautham's password
+- `CALENDAR_WIFE_PASSWORD` — her password
 - `CALENDAR_SESSION_SECRET` — a long random string, at least 32 characters
 
 Custom domain: add `calendar.thegauthams.com` on **thegauthams-calendar** (not on thegauthams.com). DNS for `thegauthams.com` is already on Netlify, so the subdomain can be attached in that site's domain settings.

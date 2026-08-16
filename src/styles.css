@@ -54,10 +54,18 @@ body {
   min-width: 0;
 }
 
-.lock {
+.lock-wrap {
   position: absolute;
   right: 0;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.who,
+.lock {
   border: 0;
   background: transparent;
   color: var(--mute);
@@ -65,8 +73,11 @@ body {
   font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  cursor: pointer;
   padding: 0;
+}
+
+.lock {
+  cursor: pointer;
 }
 
 .month {

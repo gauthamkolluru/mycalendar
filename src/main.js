@@ -22,6 +22,7 @@ const state = {
   tasks: {},
   selected: null,
   authed: false,
+  user: null,
   status: "",
 };
 
@@ -33,6 +34,7 @@ async function boot() {
   render();
   const session = await api("/api/session");
   state.authed = session.ok;
+  state.user = session.ok ? session.body.user : null;
   if (session.status === 503) {
     state.status = errorMessage(session, "Calendar is not configured.");
   }
@@ -45,6 +47,7 @@ async function loadMonth() {
   const result = await api(`/api/tasks?month=${month}`);
   if (result.status === 401) {
     state.authed = false;
+    state.user = null;
     state.tasks = {};
     return;
   }
@@ -97,6 +100,14 @@ function header() {
 }
 
 function lockButton() {
+  const wrap = document.createElement("div");
+  wrap.className = "lock-wrap";
+  if (state.user?.name) {
+    const who = document.createElement("span");
+    who.className = "who";
+    who.textContent = state.user.name;
+    wrap.append(who);
+  }
   const button = document.createElement("button");
   button.type = "button";
   button.className = "lock";
@@ -104,12 +115,14 @@ function lockButton() {
   button.addEventListener("click", async () => {
     await api("/api/session", { method: "DELETE" });
     state.authed = false;
+    state.user = null;
     state.tasks = {};
     state.selected = null;
     state.status = "";
     render();
   });
-  return button;
+  wrap.append(button);
+  return wrap;
 }
 
 function navButton(label, text, delta) {
@@ -247,6 +260,7 @@ async function onLogin(event) {
     return;
   }
   state.authed = true;
+  state.user = result.body.user || null;
   state.status = "";
   await loadMonth();
   render();

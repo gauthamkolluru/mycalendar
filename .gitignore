@@ -3,5 +3,6 @@ dist
 .env
 .env.*
 !.env.example
+.calendar-passwords
 .netlify
 .DS_Store

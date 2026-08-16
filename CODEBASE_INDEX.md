@@ -9,11 +9,13 @@
 | `validateIsoDate` | `lib/validate.js:6` | Rejects non-existent calendar dates | used by `lib/api.js` |
 | `validateTaskText` | `lib/validate.js:19` | Trims notes; rejects empty/oversized text | used by `lib/api.js` |
 | `parseYearMonth` | `lib/validate.js:31` | Parses `YYYY-MM` | used by `lib/api.js` |
-| `passwordsMatch` | `lib/auth.js:6` | Timing-safe password compare | used by `lib/api.js` |
-| `signSession` / `verifySession` | `lib/auth.js:14` / `:20` | HMAC session token | used by `lib/api.js` |
+| `passwordsMatch` | `lib/auth.js:7` | Timing-safe password compare | used by `matchUser` |
+| `matchUser` | `lib/auth.js:16` | Maps a password to Gautham or wife without leaking which failed | used by `lib/api.js` |
+| `signSession` / `verifySession` | `lib/auth.js:24` / `:30` | HMAC session token bound to a user id | used by `lib/api.js` |
 | `handleRequest` | `lib/api.js:26` | Session + notes HTTP API | used by Netlify function, tests |
-| `memoryBlobStore` | `lib/store.js:1` | In-memory Blobs stand-in | tests |
-| `readMonth` / `writeMonth` | `lib/store.js:15` / `:21` | Month JSON in a blob store | used by `lib/api.js` |
+| `memoryBlobStore` | `lib/store.js:3` | In-memory Blobs stand-in | tests |
+| `monthKey` | `lib/store.js:18` | Per-user month blob key | used by `readMonth` / `writeMonth` |
+| `readMonth` / `writeMonth` | `lib/store.js:24` / `:35` | Month JSON in a blob store, isolated by user | used by `lib/api.js` |
 | `logger` | `lib/logger.js:13` | JSON logs with a scope | used by API and UI |
 | `api` | `src/client.js:34` | Browser fetch helper | used by `src/main.js` |
 | `boot` | `src/main.js:32` | Session check, current month, first paint | page entry |
