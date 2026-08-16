@@ -486,105 +486,105 @@
    "id": "function:src/main.js:lockButton",
    "type": "function",
    "name": "lockButton",
-   "path": "src/main.js:104",
+   "path": "src/main.js:108",
    "exported": false
   },
   {
    "id": "function:src/main.js:onLockClick",
    "type": "function",
    "name": "onLockClick",
-   "path": "src/main.js:126",
+   "path": "src/main.js:130",
    "exported": false
   },
   {
    "id": "function:src/main.js:navButton",
    "type": "function",
    "name": "navButton",
-   "path": "src/main.js:141",
+   "path": "src/main.js:145",
    "exported": false
   },
   {
    "id": "function:src/main.js:weekdays",
    "type": "function",
    "name": "weekdays",
-   "path": "src/main.js:159",
+   "path": "src/main.js:163",
    "exported": false
   },
   {
    "id": "function:src/main.js:grid",
    "type": "function",
    "name": "grid",
-   "path": "src/main.js:177",
+   "path": "src/main.js:181",
    "exported": false
   },
   {
    "id": "function:src/main.js:dayCell",
    "type": "function",
    "name": "dayCell",
-   "path": "src/main.js:187",
+   "path": "src/main.js:191",
    "exported": false
   },
   {
    "id": "function:src/main.js:openDay",
    "type": "function",
    "name": "openDay",
-   "path": "src/main.js:213",
+   "path": "src/main.js:217",
    "exported": false
   },
   {
    "id": "function:src/main.js:loginDialog",
    "type": "function",
    "name": "loginDialog",
-   "path": "src/main.js:229",
+   "path": "src/main.js:233",
    "exported": false
   },
   {
    "id": "function:src/main.js:onLogin",
    "type": "function",
    "name": "onLogin",
-   "path": "src/main.js:261",
+   "path": "src/main.js:265",
    "exported": false
   },
   {
    "id": "function:src/main.js:noteDialog",
    "type": "function",
    "name": "noteDialog",
-   "path": "src/main.js:282",
+   "path": "src/main.js:286",
    "exported": false
   },
   {
    "id": "function:src/main.js:noteItem",
    "type": "function",
    "name": "noteItem",
-   "path": "src/main.js:348",
+   "path": "src/main.js:355",
    "exported": false
   },
   {
    "id": "function:src/main.js:onAddNote",
    "type": "function",
    "name": "onAddNote",
-   "path": "src/main.js:362",
+   "path": "src/main.js:369",
    "exported": false
   },
   {
    "id": "function:src/main.js:onRemoveNote",
    "type": "function",
    "name": "onRemoveNote",
-   "path": "src/main.js:382",
+   "path": "src/main.js:389",
    "exported": false
   },
   {
    "id": "function:src/main.js:formatHeading",
    "type": "function",
    "name": "formatHeading",
-   "path": "src/main.js:398",
+   "path": "src/main.js:405",
    "exported": false
   },
   {
    "id": "function:src/main.js:statusLine",
    "type": "function",
    "name": "statusLine",
-   "path": "src/main.js:408",
+   "path": "src/main.js:415",
    "exported": false
   },
   {

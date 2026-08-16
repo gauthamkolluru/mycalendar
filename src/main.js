@@ -96,7 +96,11 @@ function header() {
   year.className = "year";
   year.textContent = String(state.year);
 
-  monthWrap.append(prev, title, year, next);
+  const titleYear = document.createElement("div");
+  titleYear.className = "title-year";
+  titleYear.append(title, year);
+
+  monthWrap.append(prev, titleYear, next);
   headerEl.append(monthWrap, lockButton());
   return headerEl;
 }
