@@ -1,0 +1,881 @@
+{
+ "repository": {
+  "id": "repository:mycalendar",
+  "text": "Personal paper-style month calendar. Notes persist through a password-gated Netlify Function and Blobs store.",
+  "source_nodes": [
+   "repository:mycalendar"
+  ],
+  "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+  "summary_version": 1,
+  "enriched": true
+ },
+ "communities": [
+  {
+   "id": "community:repo",
+   "text": "Whole calendar app: UI, HTTP API, calendar math, tests.",
+   "source_nodes": [
+    "community:0",
+    "community:1",
+    "community:2",
+    "community:3",
+    "community:4",
+    "community:5",
+    "community:6"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "community:0",
+   "text": "Cluster of 54 related nodes.",
+   "source_nodes": [
+    "file:lib/api.js",
+    "function:lib/api.js:handleRequest",
+    "function:lib/api.js:requireSession",
+    "function:lib/api.js:login",
+    "function:lib/api.js:listTasks",
+    "function:lib/api.js:createTask",
+    "function:lib/api.js:removeTask",
+    "file:lib/auth.js",
+    "function:lib/auth.js:passwordsMatch",
+    "function:lib/auth.js:signSession",
+    "function:lib/auth.js:verifySession",
+    "function:lib/auth.js:parseSessionCookie",
+    "function:lib/auth.js:sessionCookieHeader",
+    "file:lib/calendar.js",
+    "function:lib/calendar.js:pad2",
+    "function:lib/calendar.js:isoDate",
+    "function:lib/calendar.js:todayParts",
+    "function:lib/calendar.js:daysInMonth",
+    "function:lib/calendar.js:buildMonthGrid",
+    "function:lib/calendar.js:holidayName",
+    "file:lib/logger.js",
+    "file:lib/store.js",
+    "function:lib/store.js:memoryBlobStore",
+    "function:lib/store.js:readMonth",
+    "function:lib/store.js:writeMonth",
+    "file:lib/validate.js",
+    "function:lib/validate.js:validateIsoDate",
+    "function:lib/validate.js:validateTaskText",
+    "function:lib/validate.js:parseYearMonth",
+    "file:netlify/functions/api.js",
+    "file:src/client.js",
+    "function:src/client.js:api",
+    "function:src/client.js:errorMessage",
+    "file:src/main.js",
+    "function:src/main.js:boot",
+    "function:src/main.js:loadMonth",
+    "function:src/main.js:sheet",
+    "function:src/main.js:lockButton",
+    "function:src/main.js:grid",
+    "function:src/main.js:dayCell",
+    "function:src/main.js:onLogin",
+    "function:src/main.js:noteDialog",
+    "function:src/main.js:onAddNote",
+    "function:src/main.js:onRemoveNote",
+    "file:tests/api.test.js",
+    "function:tests/api.test.js:login",
+    "file:tests/auth.test.js",
+    "file:tests/calendar.test.js",
+    "file:tests/validate.test.js",
+    "package:node:crypto",
+    "package:@netlify/blobs",
+    "package:vitest",
+    "feature:day-notes",
+    "api_endpoint:api"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "community:1",
+   "text": "Cluster of 2 related nodes.",
+   "source_nodes": [
+    "function:lib/api.js:logout",
+    "function:lib/auth.js:clearSessionCookieHeader"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "community:2",
+   "text": "Cluster of 2 related nodes.",
+   "source_nodes": [
+    "function:lib/calendar.js:shiftMonth",
+    "function:src/main.js:navButton"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "community:3",
+   "text": "Cluster of 2 related nodes.",
+   "source_nodes": [
+    "function:src/client.js:monthTitle",
+    "function:src/main.js:header"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "community:4",
+   "text": "Cluster of 2 related nodes.",
+   "source_nodes": [
+    "function:src/client.js:weekdayLabels",
+    "function:src/main.js:weekdays"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "community:5",
+   "text": "Cluster of 2 related nodes.",
+   "source_nodes": [
+    "file:vite.config.js",
+    "package:vite"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "community:6",
+   "text": "Cluster of 2 related nodes.",
+   "source_nodes": [
+    "file:vitest.config.js",
+    "package:vitest/config"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": true
+  }
+ ],
+ "symbols": [
+  {
+   "id": "function:lib/api.js:handleRequest",
+   "text": "handleRequest",
+   "source_nodes": [
+    "function:lib/api.js:handleRequest"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:readConfig",
+   "text": "readConfig",
+   "source_nodes": [
+    "function:lib/api.js:readConfig"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:routePath",
+   "text": "routePath",
+   "source_nodes": [
+    "function:lib/api.js:routePath"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:requireSession",
+   "text": "requireSession",
+   "source_nodes": [
+    "function:lib/api.js:requireSession"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:login",
+   "text": "login",
+   "source_nodes": [
+    "function:lib/api.js:login"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:logout",
+   "text": "logout",
+   "source_nodes": [
+    "function:lib/api.js:logout"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:listTasks",
+   "text": "listTasks",
+   "source_nodes": [
+    "function:lib/api.js:listTasks"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:createTask",
+   "text": "createTask",
+   "source_nodes": [
+    "function:lib/api.js:createTask"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:removeTask",
+   "text": "removeTask",
+   "source_nodes": [
+    "function:lib/api.js:removeTask"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:loginKey",
+   "text": "loginKey",
+   "source_nodes": [
+    "function:lib/api.js:loginKey"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:isLocked",
+   "text": "isLocked",
+   "source_nodes": [
+    "function:lib/api.js:isLocked"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:bumpLogin",
+   "text": "bumpLogin",
+   "source_nodes": [
+    "function:lib/api.js:bumpLogin"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:readJson",
+   "text": "readJson",
+   "source_nodes": [
+    "function:lib/api.js:readJson"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:isSecure",
+   "text": "isSecure",
+   "source_nodes": [
+    "function:lib/api.js:isSecure"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:json",
+   "text": "json",
+   "source_nodes": [
+    "function:lib/api.js:json"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/api.js:baseHeaders",
+   "text": "baseHeaders",
+   "source_nodes": [
+    "function:lib/api.js:baseHeaders"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/auth.js:passwordsMatch",
+   "text": "passwordsMatch",
+   "source_nodes": [
+    "function:lib/auth.js:passwordsMatch"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/auth.js:signSession",
+   "text": "signSession",
+   "source_nodes": [
+    "function:lib/auth.js:signSession"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/auth.js:verifySession",
+   "text": "verifySession",
+   "source_nodes": [
+    "function:lib/auth.js:verifySession"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/auth.js:parseSessionCookie",
+   "text": "parseSessionCookie",
+   "source_nodes": [
+    "function:lib/auth.js:parseSessionCookie"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/auth.js:sessionCookieHeader",
+   "text": "sessionCookieHeader",
+   "source_nodes": [
+    "function:lib/auth.js:sessionCookieHeader"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/auth.js:clearSessionCookieHeader",
+   "text": "clearSessionCookieHeader",
+   "source_nodes": [
+    "function:lib/auth.js:clearSessionCookieHeader"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:pad2",
+   "text": "pad2",
+   "source_nodes": [
+    "function:lib/calendar.js:pad2"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:isoDate",
+   "text": "isoDate",
+   "source_nodes": [
+    "function:lib/calendar.js:isoDate"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:todayParts",
+   "text": "todayParts",
+   "source_nodes": [
+    "function:lib/calendar.js:todayParts"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:daysInMonth",
+   "text": "daysInMonth",
+   "source_nodes": [
+    "function:lib/calendar.js:daysInMonth"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:weekdaySundayFirst",
+   "text": "weekdaySundayFirst",
+   "source_nodes": [
+    "function:lib/calendar.js:weekdaySundayFirst"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:shiftMonth",
+   "text": "shiftMonth",
+   "source_nodes": [
+    "function:lib/calendar.js:shiftMonth"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:buildMonthGrid",
+   "text": "buildMonthGrid",
+   "source_nodes": [
+    "function:lib/calendar.js:buildMonthGrid"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:cell",
+   "text": "cell",
+   "source_nodes": [
+    "function:lib/calendar.js:cell"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:holidayName",
+   "text": "holidayName",
+   "source_nodes": [
+    "function:lib/calendar.js:holidayName"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:floatingHolidays",
+   "text": "floatingHolidays",
+   "source_nodes": [
+    "function:lib/calendar.js:floatingHolidays"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:nthWeekday",
+   "text": "nthWeekday",
+   "source_nodes": [
+    "function:lib/calendar.js:nthWeekday"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:lastWeekday",
+   "text": "lastWeekday",
+   "source_nodes": [
+    "function:lib/calendar.js:lastWeekday"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:addDays",
+   "text": "addDays",
+   "source_nodes": [
+    "function:lib/calendar.js:addDays"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:easter",
+   "text": "easter",
+   "source_nodes": [
+    "function:lib/calendar.js:easter"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/calendar.js:parseIso",
+   "text": "parseIso",
+   "source_nodes": [
+    "function:lib/calendar.js:parseIso"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/logger.js:log",
+   "text": "log",
+   "source_nodes": [
+    "function:lib/logger.js:log"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/logger.js:logger",
+   "text": "logger",
+   "source_nodes": [
+    "function:lib/logger.js:logger"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/store.js:memoryBlobStore",
+   "text": "memoryBlobStore",
+   "source_nodes": [
+    "function:lib/store.js:memoryBlobStore"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/store.js:readMonth",
+   "text": "readMonth",
+   "source_nodes": [
+    "function:lib/store.js:readMonth"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/store.js:writeMonth",
+   "text": "writeMonth",
+   "source_nodes": [
+    "function:lib/store.js:writeMonth"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/store.js:isTask",
+   "text": "isTask",
+   "source_nodes": [
+    "function:lib/store.js:isTask"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/validate.js:validateIsoDate",
+   "text": "validateIsoDate",
+   "source_nodes": [
+    "function:lib/validate.js:validateIsoDate"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/validate.js:validateTaskText",
+   "text": "validateTaskText",
+   "source_nodes": [
+    "function:lib/validate.js:validateTaskText"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:lib/validate.js:parseYearMonth",
+   "text": "parseYearMonth",
+   "source_nodes": [
+    "function:lib/validate.js:parseYearMonth"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/client.js:monthTitle",
+   "text": "monthTitle",
+   "source_nodes": [
+    "function:src/client.js:monthTitle"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/client.js:weekdayLabels",
+   "text": "weekdayLabels",
+   "source_nodes": [
+    "function:src/client.js:weekdayLabels"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/client.js:api",
+   "text": "api",
+   "source_nodes": [
+    "function:src/client.js:api"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/client.js:readBody",
+   "text": "readBody",
+   "source_nodes": [
+    "function:src/client.js:readBody"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/client.js:errorMessage",
+   "text": "errorMessage",
+   "source_nodes": [
+    "function:src/client.js:errorMessage"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:boot",
+   "text": "boot",
+   "source_nodes": [
+    "function:src/main.js:boot"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:loadMonth",
+   "text": "loadMonth",
+   "source_nodes": [
+    "function:src/main.js:loadMonth"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:render",
+   "text": "render",
+   "source_nodes": [
+    "function:src/main.js:render"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:sheet",
+   "text": "sheet",
+   "source_nodes": [
+    "function:src/main.js:sheet"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:header",
+   "text": "header",
+   "source_nodes": [
+    "function:src/main.js:header"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:lockButton",
+   "text": "lockButton",
+   "source_nodes": [
+    "function:src/main.js:lockButton"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:navButton",
+   "text": "navButton",
+   "source_nodes": [
+    "function:src/main.js:navButton"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:weekdays",
+   "text": "weekdays",
+   "source_nodes": [
+    "function:src/main.js:weekdays"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:grid",
+   "text": "grid",
+   "source_nodes": [
+    "function:src/main.js:grid"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:dayCell",
+   "text": "dayCell",
+   "source_nodes": [
+    "function:src/main.js:dayCell"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:openDay",
+   "text": "openDay",
+   "source_nodes": [
+    "function:src/main.js:openDay"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:loginDialog",
+   "text": "loginDialog",
+   "source_nodes": [
+    "function:src/main.js:loginDialog"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:onLogin",
+   "text": "onLogin",
+   "source_nodes": [
+    "function:src/main.js:onLogin"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:noteDialog",
+   "text": "noteDialog",
+   "source_nodes": [
+    "function:src/main.js:noteDialog"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:noteItem",
+   "text": "noteItem",
+   "source_nodes": [
+    "function:src/main.js:noteItem"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:onAddNote",
+   "text": "onAddNote",
+   "source_nodes": [
+    "function:src/main.js:onAddNote"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:onRemoveNote",
+   "text": "onRemoveNote",
+   "source_nodes": [
+    "function:src/main.js:onRemoveNote"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:formatHeading",
+   "text": "formatHeading",
+   "source_nodes": [
+    "function:src/main.js:formatHeading"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:src/main.js:statusLine",
+   "text": "statusLine",
+   "source_nodes": [
+    "function:src/main.js:statusLine"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:tests/api.test.js:request",
+   "text": "request",
+   "source_nodes": [
+    "function:tests/api.test.js:request"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  },
+  {
+   "id": "function:tests/api.test.js:login",
+   "text": "login",
+   "source_nodes": [
+    "function:tests/api.test.js:login"
+   ],
+   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "summary_version": 1,
+   "enriched": false
+  }
+ ]
+}

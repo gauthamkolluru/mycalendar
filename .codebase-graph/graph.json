@@ -1,0 +1,2080 @@
+{
+ "nodes": [
+  {
+   "id": "repository:mycalendar",
+   "type": "repository",
+   "name": "mycalendar",
+   "path": "."
+  },
+  {
+   "id": "directory:lib",
+   "type": "directory",
+   "name": "lib",
+   "path": "lib"
+  },
+  {
+   "id": "directory:netlify",
+   "type": "directory",
+   "name": "netlify",
+   "path": "netlify"
+  },
+  {
+   "id": "directory:public",
+   "type": "directory",
+   "name": "public",
+   "path": "public"
+  },
+  {
+   "id": "directory:src",
+   "type": "directory",
+   "name": "src",
+   "path": "src"
+  },
+  {
+   "id": "directory:tests",
+   "type": "directory",
+   "name": "tests",
+   "path": "tests"
+  },
+  {
+   "id": "file:lib/api.js",
+   "type": "file",
+   "name": "api.js",
+   "path": "lib/api.js"
+  },
+  {
+   "id": "function:lib/api.js:handleRequest",
+   "type": "function",
+   "name": "handleRequest",
+   "path": "lib/api.js:26",
+   "exported": true
+  },
+  {
+   "id": "function:lib/api.js:readConfig",
+   "type": "function",
+   "name": "readConfig",
+   "path": "lib/api.js:65",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:routePath",
+   "type": "function",
+   "name": "routePath",
+   "path": "lib/api.js:72",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:requireSession",
+   "type": "function",
+   "name": "requireSession",
+   "path": "lib/api.js:81",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:login",
+   "type": "function",
+   "name": "login",
+   "path": "lib/api.js:86",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:logout",
+   "type": "function",
+   "name": "logout",
+   "path": "lib/api.js:106",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:listTasks",
+   "type": "function",
+   "name": "listTasks",
+   "path": "lib/api.js:113",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:createTask",
+   "type": "function",
+   "name": "createTask",
+   "path": "lib/api.js:127",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:removeTask",
+   "type": "function",
+   "name": "removeTask",
+   "path": "lib/api.js:152",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:loginKey",
+   "type": "function",
+   "name": "loginKey",
+   "path": "lib/api.js:167",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:isLocked",
+   "type": "function",
+   "name": "isLocked",
+   "path": "lib/api.js:176",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:bumpLogin",
+   "type": "function",
+   "name": "bumpLogin",
+   "path": "lib/api.js:183",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:readJson",
+   "type": "function",
+   "name": "readJson",
+   "path": "lib/api.js:191",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:isSecure",
+   "type": "function",
+   "name": "isSecure",
+   "path": "lib/api.js:206",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:json",
+   "type": "function",
+   "name": "json",
+   "path": "lib/api.js:210",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:baseHeaders",
+   "type": "function",
+   "name": "baseHeaders",
+   "path": "lib/api.js:217",
+   "exported": false
+  },
+  {
+   "id": "file:lib/auth.js",
+   "type": "file",
+   "name": "auth.js",
+   "path": "lib/auth.js"
+  },
+  {
+   "id": "function:lib/auth.js:passwordsMatch",
+   "type": "function",
+   "name": "passwordsMatch",
+   "path": "lib/auth.js:6",
+   "exported": true
+  },
+  {
+   "id": "function:lib/auth.js:signSession",
+   "type": "function",
+   "name": "signSession",
+   "path": "lib/auth.js:14",
+   "exported": true
+  },
+  {
+   "id": "function:lib/auth.js:verifySession",
+   "type": "function",
+   "name": "verifySession",
+   "path": "lib/auth.js:20",
+   "exported": true
+  },
+  {
+   "id": "function:lib/auth.js:parseSessionCookie",
+   "type": "function",
+   "name": "parseSessionCookie",
+   "path": "lib/auth.js:35",
+   "exported": true
+  },
+  {
+   "id": "function:lib/auth.js:sessionCookieHeader",
+   "type": "function",
+   "name": "sessionCookieHeader",
+   "path": "lib/auth.js:48",
+   "exported": true
+  },
+  {
+   "id": "function:lib/auth.js:clearSessionCookieHeader",
+   "type": "function",
+   "name": "clearSessionCookieHeader",
+   "path": "lib/auth.js:60",
+   "exported": true
+  },
+  {
+   "id": "file:lib/calendar.js",
+   "type": "file",
+   "name": "calendar.js",
+   "path": "lib/calendar.js"
+  },
+  {
+   "id": "function:lib/calendar.js:pad2",
+   "type": "function",
+   "name": "pad2",
+   "path": "lib/calendar.js:1",
+   "exported": true
+  },
+  {
+   "id": "function:lib/calendar.js:isoDate",
+   "type": "function",
+   "name": "isoDate",
+   "path": "lib/calendar.js:5",
+   "exported": true
+  },
+  {
+   "id": "function:lib/calendar.js:todayParts",
+   "type": "function",
+   "name": "todayParts",
+   "path": "lib/calendar.js:9",
+   "exported": true
+  },
+  {
+   "id": "function:lib/calendar.js:daysInMonth",
+   "type": "function",
+   "name": "daysInMonth",
+   "path": "lib/calendar.js:17",
+   "exported": true
+  },
+  {
+   "id": "function:lib/calendar.js:weekdaySundayFirst",
+   "type": "function",
+   "name": "weekdaySundayFirst",
+   "path": "lib/calendar.js:21",
+   "exported": true
+  },
+  {
+   "id": "function:lib/calendar.js:shiftMonth",
+   "type": "function",
+   "name": "shiftMonth",
+   "path": "lib/calendar.js:25",
+   "exported": true
+  },
+  {
+   "id": "function:lib/calendar.js:buildMonthGrid",
+   "type": "function",
+   "name": "buildMonthGrid",
+   "path": "lib/calendar.js:30",
+   "exported": true
+  },
+  {
+   "id": "function:lib/calendar.js:cell",
+   "type": "function",
+   "name": "cell",
+   "path": "lib/calendar.js:56",
+   "exported": false
+  },
+  {
+   "id": "function:lib/calendar.js:holidayName",
+   "type": "function",
+   "name": "holidayName",
+   "path": "lib/calendar.js:60",
+   "exported": true
+  },
+  {
+   "id": "function:lib/calendar.js:floatingHolidays",
+   "type": "function",
+   "name": "floatingHolidays",
+   "path": "lib/calendar.js:83",
+   "exported": false
+  },
+  {
+   "id": "function:lib/calendar.js:nthWeekday",
+   "type": "function",
+   "name": "nthWeekday",
+   "path": "lib/calendar.js:99",
+   "exported": false
+  },
+  {
+   "id": "function:lib/calendar.js:lastWeekday",
+   "type": "function",
+   "name": "lastWeekday",
+   "path": "lib/calendar.js:110",
+   "exported": false
+  },
+  {
+   "id": "function:lib/calendar.js:addDays",
+   "type": "function",
+   "name": "addDays",
+   "path": "lib/calendar.js:117",
+   "exported": false
+  },
+  {
+   "id": "function:lib/calendar.js:easter",
+   "type": "function",
+   "name": "easter",
+   "path": "lib/calendar.js:126",
+   "exported": false
+  },
+  {
+   "id": "function:lib/calendar.js:parseIso",
+   "type": "function",
+   "name": "parseIso",
+   "path": "lib/calendar.js:144",
+   "exported": false
+  },
+  {
+   "id": "file:lib/logger.js",
+   "type": "file",
+   "name": "logger.js",
+   "path": "lib/logger.js"
+  },
+  {
+   "id": "function:lib/logger.js:log",
+   "type": "function",
+   "name": "log",
+   "path": "lib/logger.js:1",
+   "exported": true
+  },
+  {
+   "id": "function:lib/logger.js:logger",
+   "type": "function",
+   "name": "logger",
+   "path": "lib/logger.js:13",
+   "exported": true
+  },
+  {
+   "id": "file:lib/store.js",
+   "type": "file",
+   "name": "store.js",
+   "path": "lib/store.js"
+  },
+  {
+   "id": "function:lib/store.js:memoryBlobStore",
+   "type": "function",
+   "name": "memoryBlobStore",
+   "path": "lib/store.js:1",
+   "exported": true
+  },
+  {
+   "id": "function:lib/store.js:readMonth",
+   "type": "function",
+   "name": "readMonth",
+   "path": "lib/store.js:15",
+   "exported": true
+  },
+  {
+   "id": "function:lib/store.js:writeMonth",
+   "type": "function",
+   "name": "writeMonth",
+   "path": "lib/store.js:21",
+   "exported": true
+  },
+  {
+   "id": "function:lib/store.js:isTask",
+   "type": "function",
+   "name": "isTask",
+   "path": "lib/store.js:25",
+   "exported": false
+  },
+  {
+   "id": "file:lib/validate.js",
+   "type": "file",
+   "name": "validate.js",
+   "path": "lib/validate.js"
+  },
+  {
+   "id": "function:lib/validate.js:validateIsoDate",
+   "type": "function",
+   "name": "validateIsoDate",
+   "path": "lib/validate.js:6",
+   "exported": true
+  },
+  {
+   "id": "function:lib/validate.js:validateTaskText",
+   "type": "function",
+   "name": "validateTaskText",
+   "path": "lib/validate.js:19",
+   "exported": true
+  },
+  {
+   "id": "function:lib/validate.js:parseYearMonth",
+   "type": "function",
+   "name": "parseYearMonth",
+   "path": "lib/validate.js:31",
+   "exported": true
+  },
+  {
+   "id": "file:netlify/functions/api.js",
+   "type": "file",
+   "name": "api.js",
+   "path": "netlify/functions/api.js"
+  },
+  {
+   "id": "file:src/client.js",
+   "type": "file",
+   "name": "client.js",
+   "path": "src/client.js"
+  },
+  {
+   "id": "function:src/client.js:monthTitle",
+   "type": "function",
+   "name": "monthTitle",
+   "path": "src/client.js:26",
+   "exported": true
+  },
+  {
+   "id": "function:src/client.js:weekdayLabels",
+   "type": "function",
+   "name": "weekdayLabels",
+   "path": "src/client.js:30",
+   "exported": true
+  },
+  {
+   "id": "function:src/client.js:api",
+   "type": "function",
+   "name": "api",
+   "path": "src/client.js:34",
+   "exported": true
+  },
+  {
+   "id": "function:src/client.js:readBody",
+   "type": "function",
+   "name": "readBody",
+   "path": "src/client.js:49",
+   "exported": false
+  },
+  {
+   "id": "function:src/client.js:errorMessage",
+   "type": "function",
+   "name": "errorMessage",
+   "path": "src/client.js:59",
+   "exported": true
+  },
+  {
+   "id": "file:src/main.js",
+   "type": "file",
+   "name": "main.js",
+   "path": "src/main.js"
+  },
+  {
+   "id": "function:src/main.js:boot",
+   "type": "function",
+   "name": "boot",
+   "path": "src/main.js:32",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:loadMonth",
+   "type": "function",
+   "name": "loadMonth",
+   "path": "src/main.js:43",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:render",
+   "type": "function",
+   "name": "render",
+   "path": "src/main.js:59",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:sheet",
+   "type": "function",
+   "name": "sheet",
+   "path": "src/main.js:65",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:header",
+   "type": "function",
+   "name": "header",
+   "path": "src/main.js:75",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:lockButton",
+   "type": "function",
+   "name": "lockButton",
+   "path": "src/main.js:99",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:navButton",
+   "type": "function",
+   "name": "navButton",
+   "path": "src/main.js:115",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:weekdays",
+   "type": "function",
+   "name": "weekdays",
+   "path": "src/main.js:133",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:grid",
+   "type": "function",
+   "name": "grid",
+   "path": "src/main.js:151",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:dayCell",
+   "type": "function",
+   "name": "dayCell",
+   "path": "src/main.js:161",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:openDay",
+   "type": "function",
+   "name": "openDay",
+   "path": "src/main.js:187",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:loginDialog",
+   "type": "function",
+   "name": "loginDialog",
+   "path": "src/main.js:203",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:onLogin",
+   "type": "function",
+   "name": "onLogin",
+   "path": "src/main.js:235",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:noteDialog",
+   "type": "function",
+   "name": "noteDialog",
+   "path": "src/main.js:255",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:noteItem",
+   "type": "function",
+   "name": "noteItem",
+   "path": "src/main.js:311",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:onAddNote",
+   "type": "function",
+   "name": "onAddNote",
+   "path": "src/main.js:325",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:onRemoveNote",
+   "type": "function",
+   "name": "onRemoveNote",
+   "path": "src/main.js:345",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:formatHeading",
+   "type": "function",
+   "name": "formatHeading",
+   "path": "src/main.js:361",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:statusLine",
+   "type": "function",
+   "name": "statusLine",
+   "path": "src/main.js:371",
+   "exported": false
+  },
+  {
+   "id": "file:tests/api.test.js",
+   "type": "file",
+   "name": "api.test.js",
+   "path": "tests/api.test.js"
+  },
+  {
+   "id": "function:tests/api.test.js:request",
+   "type": "test",
+   "name": "request",
+   "path": "tests/api.test.js:9",
+   "exported": false
+  },
+  {
+   "id": "function:tests/api.test.js:login",
+   "type": "test",
+   "name": "login",
+   "path": "tests/api.test.js:19",
+   "exported": false
+  },
+  {
+   "id": "file:tests/auth.test.js",
+   "type": "file",
+   "name": "auth.test.js",
+   "path": "tests/auth.test.js"
+  },
+  {
+   "id": "file:tests/calendar.test.js",
+   "type": "file",
+   "name": "calendar.test.js",
+   "path": "tests/calendar.test.js"
+  },
+  {
+   "id": "file:tests/validate.test.js",
+   "type": "file",
+   "name": "validate.test.js",
+   "path": "tests/validate.test.js"
+  },
+  {
+   "id": "file:vite.config.js",
+   "type": "file",
+   "name": "vite.config.js",
+   "path": "vite.config.js"
+  },
+  {
+   "id": "file:vitest.config.js",
+   "type": "file",
+   "name": "vitest.config.js",
+   "path": "vitest.config.js"
+  },
+  {
+   "id": "package:node:crypto",
+   "type": "package",
+   "name": "node:crypto",
+   "path": "node:crypto"
+  },
+  {
+   "id": "package:@netlify/blobs",
+   "type": "package",
+   "name": "@netlify/blobs",
+   "path": "@netlify/blobs"
+  },
+  {
+   "id": "package:vitest",
+   "type": "package",
+   "name": "vitest",
+   "path": "vitest"
+  },
+  {
+   "id": "package:vite",
+   "type": "package",
+   "name": "vite",
+   "path": "vite"
+  },
+  {
+   "id": "package:vitest/config",
+   "type": "package",
+   "name": "vitest/config",
+   "path": "vitest/config"
+  },
+  {
+   "id": "capability:desk-calendar",
+   "type": "capability",
+   "name": "desk-calendar",
+   "path": "src/main.js"
+  },
+  {
+   "id": "feature:day-notes",
+   "type": "feature",
+   "name": "day-notes",
+   "path": "lib/api.js"
+  },
+  {
+   "id": "api_endpoint:api",
+   "type": "api_endpoint",
+   "name": "/api/*",
+   "path": "netlify/functions/api.js"
+  }
+ ],
+ "edges": [
+  {
+   "source": "repository:mycalendar",
+   "target": "directory:lib",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "repository:mycalendar",
+   "target": "directory:netlify",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "repository:mycalendar",
+   "target": "directory:public",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "repository:mycalendar",
+   "target": "directory:src",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "repository:mycalendar",
+   "target": "directory:tests",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:lib",
+   "target": "file:lib/api.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:handleRequest",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:readConfig",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:routePath",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:requireSession",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:login",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:logout",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:listTasks",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:createTask",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:removeTask",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:loginKey",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:isLocked",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:bumpLogin",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:readJson",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:isSecure",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:json",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:baseHeaders",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:lib",
+   "target": "file:lib/auth.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/auth.js",
+   "target": "function:lib/auth.js:passwordsMatch",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/auth.js",
+   "target": "function:lib/auth.js:signSession",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/auth.js",
+   "target": "function:lib/auth.js:verifySession",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/auth.js",
+   "target": "function:lib/auth.js:parseSessionCookie",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/auth.js",
+   "target": "function:lib/auth.js:sessionCookieHeader",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/auth.js",
+   "target": "function:lib/auth.js:clearSessionCookieHeader",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:lib",
+   "target": "file:lib/calendar.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:pad2",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:isoDate",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:todayParts",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:daysInMonth",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:weekdaySundayFirst",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:shiftMonth",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:buildMonthGrid",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:cell",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:holidayName",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:floatingHolidays",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:nthWeekday",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:lastWeekday",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:addDays",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:easter",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/calendar.js",
+   "target": "function:lib/calendar.js:parseIso",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:lib",
+   "target": "file:lib/logger.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/logger.js",
+   "target": "function:lib/logger.js:log",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/logger.js",
+   "target": "function:lib/logger.js:logger",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:lib",
+   "target": "file:lib/store.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/store.js",
+   "target": "function:lib/store.js:memoryBlobStore",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/store.js",
+   "target": "function:lib/store.js:readMonth",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/store.js",
+   "target": "function:lib/store.js:writeMonth",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/store.js",
+   "target": "function:lib/store.js:isTask",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:lib",
+   "target": "file:lib/validate.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/validate.js",
+   "target": "function:lib/validate.js:validateIsoDate",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/validate.js",
+   "target": "function:lib/validate.js:validateTaskText",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/validate.js",
+   "target": "function:lib/validate.js:parseYearMonth",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:netlify",
+   "target": "file:netlify/functions/api.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:src",
+   "target": "file:src/client.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/client.js",
+   "target": "function:src/client.js:monthTitle",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/client.js",
+   "target": "function:src/client.js:weekdayLabels",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/client.js",
+   "target": "function:src/client.js:api",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/client.js",
+   "target": "function:src/client.js:readBody",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/client.js",
+   "target": "function:src/client.js:errorMessage",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:src",
+   "target": "file:src/main.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:boot",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:loadMonth",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:render",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:sheet",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:header",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:lockButton",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:navButton",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:weekdays",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:grid",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:dayCell",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:openDay",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:loginDialog",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:onLogin",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:noteDialog",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:noteItem",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:onAddNote",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:onRemoveNote",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:formatHeading",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:statusLine",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:tests",
+   "target": "file:tests/api.test.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/api.test.js",
+   "target": "function:tests/api.test.js:request",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/api.test.js",
+   "target": "function:tests/api.test.js:login",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:tests",
+   "target": "file:tests/auth.test.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:tests",
+   "target": "file:tests/calendar.test.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:tests",
+   "target": "file:tests/validate.test.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "repository:mycalendar",
+   "target": "file:vite.config.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "repository:mycalendar",
+   "target": "file:vitest.config.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "package:node:crypto",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "node:crypto"
+   }
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "file:lib/auth.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "./auth.js"
+   }
+  },
+  {
+   "source": "function:lib/api.js:logout",
+   "target": "function:lib/auth.js:clearSessionCookieHeader",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:login",
+   "target": "function:lib/auth.js:passwordsMatch",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:requireSession",
+   "target": "function:lib/auth.js:parseSessionCookie",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:login",
+   "target": "function:lib/auth.js:sessionCookieHeader",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:login",
+   "target": "function:lib/auth.js:signSession",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:requireSession",
+   "target": "function:lib/auth.js:verifySession",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "file:lib/logger.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "./logger.js"
+   }
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "file:lib/store.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "./store.js"
+   }
+  },
+  {
+   "source": "function:lib/api.js:listTasks",
+   "target": "function:lib/store.js:readMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:createTask",
+   "target": "function:lib/store.js:readMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:removeTask",
+   "target": "function:lib/store.js:readMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:createTask",
+   "target": "function:lib/store.js:writeMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:removeTask",
+   "target": "function:lib/store.js:writeMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "file:lib/validate.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "./validate.js"
+   }
+  },
+  {
+   "source": "function:lib/api.js:listTasks",
+   "target": "function:lib/validate.js:parseYearMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:createTask",
+   "target": "function:lib/validate.js:validateIsoDate",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:removeTask",
+   "target": "function:lib/validate.js:validateIsoDate",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:createTask",
+   "target": "function:lib/validate.js:validateTaskText",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/auth.js",
+   "target": "package:node:crypto",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "node:crypto"
+   }
+  },
+  {
+   "source": "file:lib/validate.js",
+   "target": "file:lib/calendar.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "./calendar.js"
+   }
+  },
+  {
+   "source": "function:lib/validate.js:validateIsoDate",
+   "target": "function:lib/calendar.js:daysInMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:netlify/functions/api.js",
+   "target": "package:@netlify/blobs",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "@netlify/blobs"
+   }
+  },
+  {
+   "source": "file:netlify/functions/api.js",
+   "target": "file:lib/api.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "../../lib/api.js"
+   }
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "file:lib/calendar.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "../lib/calendar.js"
+   }
+  },
+  {
+   "source": "function:src/main.js:sheet",
+   "target": "function:lib/calendar.js:buildMonthGrid",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:grid",
+   "target": "function:lib/calendar.js:buildMonthGrid",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:dayCell",
+   "target": "function:lib/calendar.js:holidayName",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:noteDialog",
+   "target": "function:lib/calendar.js:holidayName",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:grid",
+   "target": "function:lib/calendar.js:isoDate",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:navButton",
+   "target": "function:lib/calendar.js:shiftMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "file:lib/logger.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "../lib/logger.js"
+   }
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "file:src/client.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "./client.js"
+   }
+  },
+  {
+   "source": "function:src/main.js:boot",
+   "target": "function:src/client.js:api",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:loadMonth",
+   "target": "function:src/client.js:api",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:lockButton",
+   "target": "function:src/client.js:api",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:onLogin",
+   "target": "function:src/client.js:api",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:onAddNote",
+   "target": "function:src/client.js:api",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:onRemoveNote",
+   "target": "function:src/client.js:api",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:boot",
+   "target": "function:src/client.js:errorMessage",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:loadMonth",
+   "target": "function:src/client.js:errorMessage",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:onLogin",
+   "target": "function:src/client.js:errorMessage",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:onAddNote",
+   "target": "function:src/client.js:errorMessage",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:onRemoveNote",
+   "target": "function:src/client.js:errorMessage",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:header",
+   "target": "function:src/client.js:monthTitle",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:weekdays",
+   "target": "function:src/client.js:weekdayLabels",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/api.test.js",
+   "target": "package:vitest",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "vitest"
+   }
+  },
+  {
+   "source": "file:tests/api.test.js",
+   "target": "file:lib/api.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "../lib/api.js"
+   }
+  },
+  {
+   "source": "function:tests/api.test.js:login",
+   "target": "function:lib/api.js:handleRequest",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/auth.test.js",
+   "target": "package:vitest",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "vitest"
+   }
+  },
+  {
+   "source": "file:tests/auth.test.js",
+   "target": "file:lib/auth.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "../lib/auth.js"
+   }
+  },
+  {
+   "source": "file:tests/calendar.test.js",
+   "target": "package:vitest",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "vitest"
+   }
+  },
+  {
+   "source": "file:tests/calendar.test.js",
+   "target": "file:lib/calendar.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "../lib/calendar.js"
+   }
+  },
+  {
+   "source": "file:tests/validate.test.js",
+   "target": "package:vitest",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "vitest"
+   }
+  },
+  {
+   "source": "file:tests/validate.test.js",
+   "target": "file:lib/validate.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "../lib/validate.js"
+   }
+  },
+  {
+   "source": "file:vite.config.js",
+   "target": "package:vite",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "vite"
+   }
+  },
+  {
+   "source": "file:vitest.config.js",
+   "target": "package:vitest/config",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "vitest/config"
+   }
+  },
+  {
+   "source": "file:tests/api.test.js",
+   "target": "function:lib/api.js:handleRequest",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/api.test.js",
+   "target": "function:lib/store.js:memoryBlobStore",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/api.test.js",
+   "target": "function:src/client.js:api",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/auth.test.js",
+   "target": "function:lib/auth.js:passwordsMatch",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/auth.test.js",
+   "target": "function:lib/auth.js:signSession",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/auth.test.js",
+   "target": "function:lib/auth.js:verifySession",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/auth.test.js",
+   "target": "function:lib/auth.js:parseSessionCookie",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/calendar.test.js",
+   "target": "function:lib/calendar.js:pad2",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/calendar.test.js",
+   "target": "function:lib/calendar.js:isoDate",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/calendar.test.js",
+   "target": "function:lib/calendar.js:todayParts",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/calendar.test.js",
+   "target": "function:lib/calendar.js:buildMonthGrid",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/calendar.test.js",
+   "target": "function:lib/calendar.js:holidayName",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/validate.test.js",
+   "target": "function:lib/validate.js:validateIsoDate",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/validate.test.js",
+   "target": "function:lib/validate.js:validateTaskText",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/validate.test.js",
+   "target": "function:lib/validate.js:parseYearMonth",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "capability:desk-calendar",
+   "target": "feature:day-notes",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "api_endpoint:api",
+   "target": "function:lib/api.js:handleRequest",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:netlify/functions/api.js",
+   "target": "api_endpoint:api",
+   "type": "EXPOSES",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "feature:day-notes",
+   "target": "function:lib/api.js:handleRequest",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  }
+ ]
+}

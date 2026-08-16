@@ -1,0 +1,141 @@
+{
+ "communities": [
+  {
+   "id": "community:repo",
+   "level": 0,
+   "parent": null,
+   "members": [
+    "community:0",
+    "community:1",
+    "community:2",
+    "community:3",
+    "community:4",
+    "community:5",
+    "community:6"
+   ],
+   "algorithm": "leiden"
+  },
+  {
+   "id": "community:0",
+   "level": 1,
+   "parent": "community:repo",
+   "members": [
+    "file:lib/api.js",
+    "function:lib/api.js:handleRequest",
+    "function:lib/api.js:requireSession",
+    "function:lib/api.js:login",
+    "function:lib/api.js:listTasks",
+    "function:lib/api.js:createTask",
+    "function:lib/api.js:removeTask",
+    "file:lib/auth.js",
+    "function:lib/auth.js:passwordsMatch",
+    "function:lib/auth.js:signSession",
+    "function:lib/auth.js:verifySession",
+    "function:lib/auth.js:parseSessionCookie",
+    "function:lib/auth.js:sessionCookieHeader",
+    "file:lib/calendar.js",
+    "function:lib/calendar.js:pad2",
+    "function:lib/calendar.js:isoDate",
+    "function:lib/calendar.js:todayParts",
+    "function:lib/calendar.js:daysInMonth",
+    "function:lib/calendar.js:buildMonthGrid",
+    "function:lib/calendar.js:holidayName",
+    "file:lib/logger.js",
+    "file:lib/store.js",
+    "function:lib/store.js:memoryBlobStore",
+    "function:lib/store.js:readMonth",
+    "function:lib/store.js:writeMonth",
+    "file:lib/validate.js",
+    "function:lib/validate.js:validateIsoDate",
+    "function:lib/validate.js:validateTaskText",
+    "function:lib/validate.js:parseYearMonth",
+    "file:netlify/functions/api.js",
+    "file:src/client.js",
+    "function:src/client.js:api",
+    "function:src/client.js:errorMessage",
+    "file:src/main.js",
+    "function:src/main.js:boot",
+    "function:src/main.js:loadMonth",
+    "function:src/main.js:sheet",
+    "function:src/main.js:lockButton",
+    "function:src/main.js:grid",
+    "function:src/main.js:dayCell",
+    "function:src/main.js:onLogin",
+    "function:src/main.js:noteDialog",
+    "function:src/main.js:onAddNote",
+    "function:src/main.js:onRemoveNote",
+    "file:tests/api.test.js",
+    "function:tests/api.test.js:login",
+    "file:tests/auth.test.js",
+    "file:tests/calendar.test.js",
+    "file:tests/validate.test.js",
+    "package:node:crypto",
+    "package:@netlify/blobs",
+    "package:vitest",
+    "feature:day-notes",
+    "api_endpoint:api"
+   ],
+   "algorithm": "leiden"
+  },
+  {
+   "id": "community:1",
+   "level": 1,
+   "parent": "community:repo",
+   "members": [
+    "function:lib/api.js:logout",
+    "function:lib/auth.js:clearSessionCookieHeader"
+   ],
+   "algorithm": "leiden"
+  },
+  {
+   "id": "community:2",
+   "level": 1,
+   "parent": "community:repo",
+   "members": [
+    "function:lib/calendar.js:shiftMonth",
+    "function:src/main.js:navButton"
+   ],
+   "algorithm": "leiden"
+  },
+  {
+   "id": "community:3",
+   "level": 1,
+   "parent": "community:repo",
+   "members": [
+    "function:src/client.js:monthTitle",
+    "function:src/main.js:header"
+   ],
+   "algorithm": "leiden"
+  },
+  {
+   "id": "community:4",
+   "level": 1,
+   "parent": "community:repo",
+   "members": [
+    "function:src/client.js:weekdayLabels",
+    "function:src/main.js:weekdays"
+   ],
+   "algorithm": "leiden"
+  },
+  {
+   "id": "community:5",
+   "level": 1,
+   "parent": "community:repo",
+   "members": [
+    "file:vite.config.js",
+    "package:vite"
+   ],
+   "algorithm": "leiden"
+  },
+  {
+   "id": "community:6",
+   "level": 1,
+   "parent": "community:repo",
+   "members": [
+    "file:vitest.config.js",
+    "package:vitest/config"
+   ],
+   "algorithm": "leiden"
+  }
+ ]
+}

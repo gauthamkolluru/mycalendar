@@ -1,0 +1,19 @@
+{
+  "name": "mycalendar",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "npx netlify-cli dev",
+    "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^10.0.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0",
+    "vitest": "^3.2.0"
+  }
+}
