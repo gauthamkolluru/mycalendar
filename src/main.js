@@ -12,6 +12,7 @@ import {
   monthTitle,
   weekdayLabels,
 } from "./client.js";
+import { createDayReminders } from "./reminders.js";
 import "./styles.css";
 
 const log = logger("ui");
@@ -19,6 +20,8 @@ const LOCK_ICON =
   '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
 const UNLOCK_ICON =
   '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.2-2.8"/></svg>';
+const BELL_ICON =
+  '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 17h12l-1.2-1.2a2 2 0 0 1-.6-1.4V10a4.2 4.2 0 0 0-8.4 0v4.4a2 2 0 0 1-.6 1.4L6 17Z"/><path d="M10 17a2 2 0 0 0 4 0"/><path d="M12 4v1.2"/></svg>';
 const today = todayParts();
 const state = {
   year: today.year,
@@ -28,7 +31,9 @@ const state = {
   authed: false,
   user: null,
   status: "",
+  notifyPermission: typeof Notification === "undefined" ? "denied" : Notification.permission,
 };
+const reminders = createDayReminders({ api });
 
 const app = document.getElementById("app");
 
@@ -42,7 +47,10 @@ async function boot() {
   if (session.status === 503) {
     state.status = errorMessage(session, "Calendar is not configured.");
   }
-  if (state.authed) await loadMonth();
+  if (state.authed) {
+    await loadMonth();
+    syncReminders();
+  }
   render();
 }
 
@@ -53,6 +61,7 @@ async function loadMonth() {
     state.authed = false;
     state.user = null;
     state.tasks = {};
+    reminders.stop();
     return;
   }
   if (!result.ok) {
@@ -101,11 +110,11 @@ function header() {
   titleYear.append(title, year);
 
   monthWrap.append(prev, titleYear, next);
-  headerEl.append(monthWrap, lockButton());
+  headerEl.append(monthWrap, headerActions());
   return headerEl;
 }
 
-function lockButton() {
+function headerActions() {
   const wrap = document.createElement("div");
   wrap.className = "lock-wrap";
   if (state.authed && state.user?.name) {
@@ -114,6 +123,31 @@ function lockButton() {
     who.textContent = state.user.name;
     wrap.append(who);
   }
+  if (state.authed) wrap.append(notifyButton());
+  wrap.append(lockButton());
+  return wrap;
+}
+
+function notifyButton() {
+  const permission = state.notifyPermission;
+  const tip =
+    permission === "granted"
+      ? "reminders on"
+      : permission === "denied"
+        ? "reminders blocked"
+        : "enable reminders";
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "lock notify";
+  if (permission === "granted") button.classList.add("on");
+  button.dataset.tip = tip;
+  button.setAttribute("aria-label", tip);
+  button.innerHTML = BELL_ICON;
+  button.addEventListener("click", onNotifyClick);
+  return button;
+}
+
+function lockButton() {
   const unlocked = state.authed;
   const action = unlocked ? "lock" : "unlock";
   const button = document.createElement("button");
@@ -123,8 +157,26 @@ function lockButton() {
   button.setAttribute("aria-label", action);
   button.innerHTML = unlocked ? UNLOCK_ICON : LOCK_ICON;
   button.addEventListener("click", onLockClick);
-  wrap.append(button);
-  return wrap;
+  return button;
+}
+
+async function onNotifyClick() {
+  const permission = await reminders.enable();
+  state.notifyPermission = permission;
+  if (permission === "granted") {
+    syncReminders();
+    state.status = "";
+  } else if (permission === "denied") {
+    state.status = "Browser blocked calendar reminders.";
+  }
+  render();
+}
+
+function syncReminders() {
+  if (state.authed && state.user) reminders.start(state.user);
+  else reminders.stop();
+  state.notifyPermission =
+    typeof Notification === "undefined" ? "denied" : Notification.permission;
 }
 
 async function onLockClick() {
@@ -139,6 +191,7 @@ async function onLockClick() {
   state.tasks = {};
   state.selected = null;
   state.status = "";
+  reminders.stop();
   render();
 }
 
@@ -280,6 +333,7 @@ async function onLogin(event) {
   state.user = result.body.user || null;
   state.status = "";
   await loadMonth();
+  syncReminders();
   render();
 }
 
@@ -381,6 +435,7 @@ async function onAddNote(event) {
   }
   state.status = "";
   await loadMonth();
+  reminders.refresh();
   render();
   const input = document.getElementById("note-input");
   if (input) input.focus();
@@ -399,6 +454,7 @@ async function onRemoveNote(task) {
   }
   state.status = "";
   await loadMonth();
+  reminders.refresh();
   render();
 }
 

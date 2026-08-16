@@ -10,6 +10,7 @@ Hosting uses the same Netlify account as [thegauthams.com](https://thegauthams.c
 - Click a square to add or remove notes.
 - Use `‹` `›` to turn the page.
 - Sign in with your password. Each person sees only their own notes.
+- After sign-in, use the bell to allow browser reminders. At **11:00 America/New_York** (Eastern, DST-aware), the open tab notifies you if today has notes or a holiday.
 
 ## Local
 

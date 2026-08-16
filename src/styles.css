@@ -98,7 +98,8 @@ body {
 }
 
 .lock:hover,
-.lock:focus-visible {
+.lock:focus-visible,
+.notify.on {
   color: var(--ink);
 }
 
