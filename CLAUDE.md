@@ -4,7 +4,8 @@ This project lives under the **`1-projects`** monorepo. Before substantive code 
 
 1. Read and follow **`ENGINEERING_GUIDELINES_VERBATIM.md`** (canonical standards for humans and all agents).
 2. Apply **`.cursor/rules/*.mdc`** from that root (treat as binding project standards; YAML frontmatter may be skipped outside Cursor).
-3. Optional review workflow: **`.cursor/skills/grill-me/SKILL.md`** at that root.
+3. Maintain `.codebase-graph/` per `agent-codebase-graph.mdc`: retrieve from it, and refresh it in the **same turn** after every change. Skipping is a deviation — ask first.
+4. Optional review workflow: **`.cursor/skills/grill-me/SKILL.md`** at that root.
 
 If `ENGINEERING_GUIDELINES_VERBATIM.md` cannot be found (standalone checkout), ignore this section.
 

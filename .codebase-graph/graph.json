@@ -53,84 +53,91 @@
    "id": "function:lib/api.js:readConfig",
    "type": "function",
    "name": "readConfig",
-   "path": "lib/api.js:65",
+   "path": "lib/api.js:69",
    "exported": false
   },
   {
    "id": "function:lib/api.js:routePath",
    "type": "function",
    "name": "routePath",
-   "path": "lib/api.js:72",
+   "path": "lib/api.js:88",
    "exported": false
   },
   {
    "id": "function:lib/api.js:requireSession",
    "type": "function",
    "name": "requireSession",
-   "path": "lib/api.js:81",
+   "path": "lib/api.js:97",
    "exported": false
   },
   {
    "id": "function:lib/api.js:login",
    "type": "function",
    "name": "login",
-   "path": "lib/api.js:86",
+   "path": "lib/api.js:104",
    "exported": false
   },
   {
    "id": "function:lib/api.js:logout",
    "type": "function",
    "name": "logout",
-   "path": "lib/api.js:106",
+   "path": "lib/api.js:129",
    "exported": false
   },
   {
    "id": "function:lib/api.js:listTasks",
    "type": "function",
    "name": "listTasks",
-   "path": "lib/api.js:113",
+   "path": "lib/api.js:136",
    "exported": false
   },
   {
    "id": "function:lib/api.js:createTask",
    "type": "function",
    "name": "createTask",
-   "path": "lib/api.js:127",
+   "path": "lib/api.js:151",
+   "exported": false
+  },
+  {
+   "id": "function:lib/api.js:updateTask",
+   "type": "function",
+   "name": "updateTask",
+   "path": "lib/api.js:177",
    "exported": false
   },
   {
    "id": "function:lib/api.js:removeTask",
    "type": "function",
    "name": "removeTask",
-   "path": "lib/api.js:152",
+   "path": "lib/api.js:201",
    "exported": false
   },
   {
    "id": "function:lib/api.js:loginKey",
    "type": "function",
    "name": "loginKey",
-   "path": "lib/api.js:167",
+   "path": "lib/api.js:217",
    "exported": false
   },
   {
    "id": "function:lib/api.js:isLocked",
    "type": "function",
    "name": "isLocked",
-   "path": "lib/api.js:176",
+   "path": "lib/api.js:226",
    "exported": false
   },
   {
    "id": "function:lib/api.js:bumpLogin",
    "type": "function",
    "name": "bumpLogin",
-   "path": "lib/api.js:183",
+   "path": "lib/api.js:233",
    "exported": false
   },
   {
    "id": "function:lib/api.js:readJson",
    "type": "function",
    "name": "readJson",
-   "path": "lib/api.js:191",
+   "path": "lib/api.js:241",
    "exported": false
   },
   {
@@ -570,49 +577,63 @@
    "id": "function:src/main.js:noteDialog",
    "type": "function",
    "name": "noteDialog",
-   "path": "src/main.js:289",
+   "path": "src/main.js:295",
    "exported": false
   },
   {
    "id": "function:src/main.js:noteItem",
    "type": "function",
    "name": "noteItem",
-   "path": "src/main.js:358",
+   "path": "src/main.js:359",
    "exported": false
   },
   {
-   "id": "function:src/main.js:onAddNote",
+   "id": "function:src/main.js:onSubmitNote",
    "type": "function",
-   "name": "onAddNote",
-   "path": "src/main.js:372",
+   "name": "onSubmitNote",
+   "path": "src/main.js:401",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:startEdit",
+   "type": "function",
+   "name": "startEdit",
+   "path": "src/main.js:390",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:closeDay",
+   "type": "function",
+   "name": "closeDay",
+   "path": "src/main.js:384",
    "exported": false
   },
   {
    "id": "function:src/main.js:onRemoveNote",
    "type": "function",
    "name": "onRemoveNote",
-   "path": "src/main.js:392",
+   "path": "src/main.js:433",
    "exported": false
   },
   {
    "id": "function:src/main.js:formatHeading",
    "type": "function",
    "name": "formatHeading",
-   "path": "src/main.js:408",
+   "path": "src/main.js:450",
    "exported": false
   },
   {
    "id": "function:src/main.js:statusLine",
    "type": "function",
    "name": "statusLine",
-   "path": "src/main.js:418",
+   "path": "src/main.js:460",
    "exported": false
   },
   {
    "id": "function:src/main.js:onDocumentKey",
    "type": "function",
    "name": "onDocumentKey",
-   "path": "src/main.js:425",
+   "path": "src/main.js:467",
    "exported": false
   },
   {
@@ -718,6 +739,18 @@
    "type": "api_endpoint",
    "name": "/api/*",
    "path": "netlify/functions/api.js"
+  },
+  {
+   "id": "file:AGENTS.md",
+   "type": "file",
+   "name": "AGENTS.md",
+   "path": "AGENTS.md"
+  },
+  {
+   "id": "file:CLAUDE.md",
+   "type": "file",
+   "name": "CLAUDE.md",
+   "path": "CLAUDE.md"
   }
  ],
  "edges": [
@@ -1395,7 +1428,7 @@
   },
   {
    "source": "file:src/main.js",
-   "target": "function:src/main.js:onAddNote",
+   "target": "function:src/main.js:onSubmitNote",
    "type": "CONTAINS",
    "weight": 1,
    "inferred": false,
@@ -1890,7 +1923,7 @@
    "metadata": {}
   },
   {
-   "source": "function:src/main.js:onAddNote",
+   "source": "function:src/main.js:onSubmitNote",
    "target": "function:src/client.js:api",
    "type": "CALLS",
    "weight": 5,
@@ -1930,7 +1963,7 @@
    "metadata": {}
   },
   {
-   "source": "function:src/main.js:onAddNote",
+   "source": "function:src/main.js:onSubmitNote",
    "target": "function:src/client.js:errorMessage",
    "type": "CALLS",
    "weight": 5,
@@ -2254,6 +2287,150 @@
    "target": "function:src/main.js:onLockClick",
    "type": "CALLS",
    "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:lib/api.js",
+   "target": "function:lib/api.js:updateTask",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:closeDay",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:startEdit",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:updateTask",
+   "target": "function:lib/store.js:readMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:updateTask",
+   "target": "function:lib/store.js:writeMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:updateTask",
+   "target": "function:lib/validate.js:validateIsoDate",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:lib/api.js:updateTask",
+   "target": "function:lib/validate.js:validateTaskText",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:noteDialog",
+   "target": "function:src/main.js:noteItem",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:noteDialog",
+   "target": "function:src/main.js:closeDay",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:noteDialog",
+   "target": "function:src/main.js:onSubmitNote",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:noteItem",
+   "target": "function:src/main.js:startEdit",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:noteItem",
+   "target": "function:src/main.js:onRemoveNote",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:onDocumentKey",
+   "target": "function:src/main.js:closeDay",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:tests/api.test.js",
+   "target": "function:lib/api.js:updateTask",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "repository:mycalendar",
+   "target": "file:AGENTS.md",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "repository:mycalendar",
+   "target": "file:CLAUDE.md",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:AGENTS.md",
+   "target": "repository:mycalendar",
+   "type": "DOCUMENTS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:CLAUDE.md",
+   "target": "repository:mycalendar",
+   "type": "DOCUMENTS",
+   "weight": 1,
    "inferred": false,
    "metadata": {}
   }

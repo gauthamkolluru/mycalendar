@@ -23,6 +23,8 @@ const UNLOCK_ICON =
   '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.2-2.8"/></svg>';
 const BELL_ICON =
   '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 17h12l-1.2-1.2a2 2 0 0 1-.6-1.4V10a4.2 4.2 0 0 0-8.4 0v4.4a2 2 0 0 1-.6 1.4L6 17Z"/><path d="M10 17a2 2 0 0 0 4 0"/><path d="M12 4v1.2"/></svg>';
+const PENCIL_ICON =
+  '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20l1-4.2L16.6 4.2a1.8 1.8 0 0 1 2.5 0l.7.7a1.8 1.8 0 0 1 0 2.5L8.2 19.1 4 20z"/><path d="M14 6.8l3.2 3.2"/></svg>';
 const today = todayParts();
 const state = {
   year: today.year,
@@ -33,6 +35,7 @@ const state = {
   user: null,
   status: "",
   notifyPermission: typeof Notification === "undefined" ? "denied" : Notification.permission,
+  editing: null,
 };
 const reminders = createDayReminders({ api });
 
@@ -191,6 +194,7 @@ async function onLockClick() {
   state.user = null;
   state.tasks = {};
   state.selected = null;
+  state.editing = null;
   state.status = "";
   reminders.stop();
   render();
@@ -211,6 +215,7 @@ async function goToMonth(delta) {
   state.year = next.year;
   state.month = next.month;
   state.selected = null;
+  state.editing = null;
   state.status = "";
   if (state.authed) await loadMonth();
   render();
@@ -277,6 +282,7 @@ async function openDay(cell) {
     if (state.authed) await loadMonth();
   }
   state.selected = cell.iso;
+  state.editing = null;
   if (!state.authed) {
     render();
     return;
@@ -344,10 +350,7 @@ function noteDialog() {
   const scrim = document.createElement("div");
   scrim.className = "scrim";
   scrim.addEventListener("click", (event) => {
-    if (event.target === scrim) {
-      state.selected = null;
-      render();
-    }
+    if (event.target === scrim) closeDay();
   });
 
   const dialog = document.createElement("div");
@@ -366,10 +369,7 @@ function noteDialog() {
   close.className = "close";
   close.setAttribute("aria-label", "Close");
   close.textContent = "Close";
-  close.addEventListener("click", () => {
-    state.selected = null;
-    render();
-  });
+  close.addEventListener("click", closeDay);
 
   const list = document.createElement("ul");
   list.className = "note-list";
@@ -391,16 +391,17 @@ function noteDialog() {
   }
 
   const form = document.createElement("form");
-  form.addEventListener("submit", onAddNote);
+  form.addEventListener("submit", onSubmitNote);
   const input = document.createElement("input");
   input.id = "note-input";
   input.name = "text";
   input.maxLength = 280;
-  input.placeholder = "Write a note";
+  input.placeholder = state.editing ? "Edit note" : "Write a note";
   input.autocomplete = "off";
+  if (state.editing) input.value = state.editing.text;
   const add = document.createElement("button");
   add.type = "submit";
-  add.textContent = "Add";
+  add.textContent = state.editing ? "Save" : "Add";
   form.append(input, add);
 
   dialog.append(heading, close, list, form);
@@ -411,32 +412,72 @@ function noteDialog() {
 
 function noteItem(task) {
   const item = document.createElement("li");
+  const editing = state.editing?.id === task.id;
+  if (editing) item.classList.add("editing");
   const text = document.createElement("span");
   text.textContent = task.text;
+  const actions = document.createElement("div");
+  actions.className = "note-actions";
+  const edit = document.createElement("button");
+  edit.type = "button";
+  edit.className = "edit";
+  edit.setAttribute("aria-label", editing ? "Cancel edit" : "Edit note");
+  edit.innerHTML = PENCIL_ICON;
+  edit.addEventListener("click", () => startEdit(task));
   const remove = document.createElement("button");
   remove.type = "button";
   remove.className = "remove";
   remove.setAttribute("aria-label", "Remove note");
   remove.textContent = "×";
   remove.addEventListener("click", () => onRemoveNote(task));
-  item.append(text, remove);
+  actions.append(edit, remove);
+  item.append(text, actions);
   return item;
 }
 
-async function onAddNote(event) {
+function closeDay() {
+  state.selected = null;
+  state.editing = null;
+  render();
+}
+
+function startEdit(task) {
+  state.editing = state.editing?.id === task.id ? null : task;
+  state.status = "";
+  render();
+  const input = document.getElementById("note-input");
+  if (input) {
+    input.focus();
+    if (state.editing) input.select();
+  }
+}
+
+async function onSubmitNote(event) {
   event.preventDefault();
   const text = new FormData(event.currentTarget).get("text");
-  const result = await api("/api/tasks", {
-    method: "POST",
-    body: JSON.stringify({ date: state.selected, text }),
-  });
+  const editing = state.editing;
+  const result = editing
+    ? await api("/api/tasks", {
+        method: "PATCH",
+        body: JSON.stringify({ date: editing.date, id: editing.id, text }),
+      })
+    : await api("/api/tasks", {
+        method: "POST",
+        body: JSON.stringify({ date: state.selected, text }),
+      });
   if (!result.ok) {
-    state.status = errorMessage(result, "Could not save that note.");
-    log.warn("task_create_failed", { status: result.status });
+    state.status = errorMessage(
+      result,
+      editing ? "Could not update that note." : "Could not save that note.",
+    );
+    log.warn(editing ? "task_update_failed" : "task_create_failed", {
+      status: result.status,
+    });
     render();
     return;
   }
   state.status = "";
+  state.editing = null;
   await loadMonth();
   reminders.refresh();
   render();
@@ -456,6 +497,7 @@ async function onRemoveNote(task) {
     return;
   }
   state.status = "";
+  if (state.editing?.id === task.id) state.editing = null;
   await loadMonth();
   reminders.refresh();
   render();
@@ -479,9 +521,16 @@ function statusLine(text) {
 }
 
 function onDocumentKey(event) {
-  if (event.key === "Escape" && state.selected) {
-    state.selected = null;
+  if (event.key === "Escape" && state.editing) {
+    state.editing = null;
+    state.status = "";
     render();
+    const input = document.getElementById("note-input");
+    if (input) input.focus();
+    return;
+  }
+  if (event.key === "Escape" && state.selected) {
+    closeDay();
     return;
   }
   const delta = monthNavDelta(event);

@@ -28,7 +28,7 @@
   },
   {
    "id": "community:0",
-   "text": "Cluster of 54 related nodes.",
+   "text": "Notes API, session auth, calendar UI, and tests — including edit-in-place of a day's notes.",
    "source_nodes": [
     "file:lib/api.js",
     "function:lib/api.js:handleRequest",
@@ -68,11 +68,16 @@
     "function:src/main.js:loadMonth",
     "function:src/main.js:sheet",
     "function:src/main.js:lockButton",
+    "function:src/main.js:onLockClick",
     "function:src/main.js:grid",
     "function:src/main.js:dayCell",
     "function:src/main.js:onLogin",
     "function:src/main.js:noteDialog",
-    "function:src/main.js:onAddNote",
+    "function:src/main.js:startEdit",
+    "function:src/main.js:closeDay",
+    "function:src/main.js:noteItem",
+    "function:lib/api.js:updateTask",
+    "function:src/main.js:onSubmitNote",
     "function:src/main.js:onRemoveNote",
     "file:tests/api.test.js",
     "function:tests/api.test.js:login",
@@ -85,7 +90,7 @@
     "feature:day-notes",
     "api_endpoint:api"
    ],
-   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
    "summary_version": 1,
    "enriched": true
   },
@@ -844,33 +849,23 @@
   },
   {
    "id": "function:src/main.js:noteDialog",
-   "text": "Centered notes panel over a dimmed calendar.",
+   "text": "Centered notes panel: list, pencil edit, and add/save field.",
    "source_nodes": [
     "function:src/main.js:noteDialog"
    ],
-   "commit_sha": "eafac16e6969e4f2726cb9cc24a5a4a7bf6b658f",
+   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
    "summary_version": 1,
    "enriched": true
   },
   {
    "id": "function:src/main.js:noteItem",
-   "text": "noteItem",
+   "text": "One note row with edit (pencil) and remove actions.",
    "source_nodes": [
     "function:src/main.js:noteItem"
    ],
-   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
    "summary_version": 1,
-   "enriched": false
-  },
-  {
-   "id": "function:src/main.js:onAddNote",
-   "text": "onAddNote",
-   "source_nodes": [
-    "function:src/main.js:onAddNote"
-   ],
-   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
-   "summary_version": 1,
-   "enriched": false
+   "enriched": true
   },
   {
    "id": "function:src/main.js:onRemoveNote",
@@ -904,11 +899,11 @@
   },
   {
    "id": "function:src/main.js:onDocumentKey",
-   "text": "Escape closes the selected day; left/right arrows change the month.",
+   "text": "Escape cancels an edit, then closes the day; arrows change month.",
    "source_nodes": [
     "function:src/main.js:onDocumentKey"
    ],
-   "commit_sha": "99395d54db61f0d39956eec3752aedd3d25715a9",
+   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
    "summary_version": 1,
    "enriched": true
   },
@@ -939,6 +934,66 @@
     "file:tests/client.test.js"
    ],
    "commit_sha": "99395d54db61f0d39956eec3752aedd3d25715a9",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "function:lib/api.js:updateTask",
+   "text": "Replaces a day's note text for the signed-in user.",
+   "source_nodes": [
+    "function:lib/api.js:updateTask"
+   ],
+   "enriched": true,
+   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "summary_version": 1
+  },
+  {
+   "id": "function:src/main.js:closeDay",
+   "text": "Closes the notes panel and clears edit state.",
+   "source_nodes": [
+    "function:src/main.js:closeDay"
+   ],
+   "enriched": true,
+   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "summary_version": 1
+  },
+  {
+   "id": "function:src/main.js:startEdit",
+   "text": "Loads a note into the same panel form, or cancels if already editing it.",
+   "source_nodes": [
+    "function:src/main.js:startEdit"
+   ],
+   "enriched": true,
+   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "summary_version": 1
+  },
+  {
+   "id": "function:src/main.js:onSubmitNote",
+   "text": "Creates a note or saves the note currently being edited.",
+   "source_nodes": [
+    "function:src/main.js:onSubmitNote"
+   ],
+   "enriched": true,
+   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "summary_version": 1
+  },
+  {
+   "id": "file:AGENTS.md",
+   "text": "Agent instructions: monorepo standards plus mandatory same-turn graph refresh.",
+   "source_nodes": [
+    "file:AGENTS.md"
+   ],
+   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "file:CLAUDE.md",
+   "text": "Claude instructions: monorepo standards, local run notes, mandatory graph refresh.",
+   "source_nodes": [
+    "file:CLAUDE.md"
+   ],
+   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
    "summary_version": 1,
    "enriched": true
   }

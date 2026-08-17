@@ -77,8 +77,16 @@ describe("handleRequest", () => {
       ENV,
       store,
     );
+    const update = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: "missing", text: "edited" },
+      }),
+      ENV,
+      store,
+    );
     expect(read.status).toBe(401);
     expect(write.status).toBe(401);
+    expect(update.status).toBe(401);
   });
 
   it("rejects a wrong password without setting a session cookie", async () => {
@@ -127,6 +135,88 @@ describe("handleRequest", () => {
       store,
     );
     expect(deleted.status).toBe(204);
+  });
+
+  it("updates an existing note without changing its id", async () => {
+    const store = memoryBlobStore();
+    const token = await login(store);
+    const created = await handleRequest(
+      request("POST", "/api/tasks", {
+        body: { date: "2025-10-31", text: "candy" },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    const createdBody = await created.json();
+
+    const updated = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: createdBody.task.id, text: "  caramel  " },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    expect(updated.status).toBe(200);
+    const updatedBody = await updated.json();
+    expect(updatedBody.task).toMatchObject({
+      id: createdBody.task.id,
+      date: "2025-10-31",
+      text: "caramel",
+    });
+
+    const listed = await handleRequest(
+      request("GET", "/api/tasks?month=2025-10", {
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    const month = await listed.json();
+    expect(month.tasks["2025-10-31"].map((task) => task.text)).toEqual(["caramel"]);
+  });
+
+  it("rejects empty, missing, and unknown note updates", async () => {
+    const store = memoryBlobStore();
+    const token = await login(store);
+    const created = await handleRequest(
+      request("POST", "/api/tasks", {
+        body: { date: "2025-10-31", text: "candy" },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    const { task } = await created.json();
+
+    const empty = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: task.id, text: "  " },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    const missingId = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", text: "caramel" },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    const unknown = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: "not-a-note", text: "caramel" },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    expect(empty.status).toBe(400);
+    expect(missingId.status).toBe(400);
+    expect(unknown.status).toBe(404);
   });
 
   it("rejects invalid dates and empty notes", async () => {
@@ -231,6 +321,30 @@ describe("handleRequest", () => {
     ]);
     expect(wifeMonth.tasks["2025-10-31"].map((task) => task.text)).toEqual([
       "wife only",
+    ]);
+
+    const crossUpdate = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: {
+          date: "2025-10-31",
+          id: gauthamMonth.tasks["2025-10-31"][0].id,
+          text: "stolen",
+        },
+        cookie: `cal_session=${wife}`,
+      }),
+      ENV,
+      store,
+    );
+    expect(crossUpdate.status).toBe(404);
+    const gauthamAfter = await handleRequest(
+      request("GET", "/api/tasks?month=2025-10", {
+        cookie: `cal_session=${gautham}`,
+      }),
+      ENV,
+      store,
+    ).then((response) => response.json());
+    expect(gauthamAfter.tasks["2025-10-31"].map((task) => task.text)).toEqual([
+      "gautham only",
     ]);
   });
 

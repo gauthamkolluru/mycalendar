@@ -314,6 +314,7 @@ body {
 }
 
 .panel .close,
+.panel .edit,
 .panel .remove {
   background: transparent;
   color: var(--ink);
@@ -326,6 +327,41 @@ body {
   top: 0.85rem;
   right: 0.9rem;
   font-size: 0.85rem;
+}
+
+.note-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  flex-shrink: 0;
+}
+
+.panel .edit {
+  display: grid;
+  place-items: center;
+  line-height: 0;
+}
+
+.panel .edit svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.panel .remove {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.note-list li.editing {
+  background: #f4f4f4;
+  margin: 0 -0.35rem;
+  padding: 0.2rem 0.35rem;
+  border-radius: 0.45rem;
 }
 
 .notes-panel form {
