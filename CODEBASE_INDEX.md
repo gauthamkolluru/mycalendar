@@ -17,11 +17,15 @@
 | `monthKey` | `lib/store.js:18` | Per-user month blob key | used by `readMonth` / `writeMonth` |
 | `readMonth` / `writeMonth` | `lib/store.js:24` / `:35` | Month JSON in a blob store, isolated by user | used by `lib/api.js` |
 | `logger` | `lib/logger.js:13` | JSON logs with a scope | used by API and UI |
-| `api` | `src/client.js:34` | Browser fetch helper | used by `src/main.js` |
+| `api` | `src/client.js:49` | Browser fetch helper | used by `src/main.js` |
+| `monthNavDelta` | `src/client.js:34` | Arrow keys to previous/next month; 0 while typing | used by `onDocumentKey`, tests |
 | `createDayReminders` | `src/reminders.js` | Schedules 11:00 ET browser notifications for today's events | used by `src/main.js` |
 | Eastern reminder helpers | `lib/reminders.js` | DST-aware 11:00 `America/New_York` timing and reminder copy | used by `src/reminders.js`, tests |
-| `boot` | `src/main.js:42` | Session check, current month, first paint | page entry |
-| `lockButton` | `src/main.js:149` | Lock/unlock icon with hover label | used by `headerActions` |
-| `notifyButton` | `src/main.js:130` | Enable browser day reminders | used by `headerActions` |
-| `onLockClick` | `src/main.js:181` | Ends the session, or focuses the password field | used by `lockButton` |
+| `boot` | `src/main.js` | Session check, current month, first paint | page entry |
+| `lockButton` | `src/main.js` | Lock/unlock icon with hover label | used by `headerActions` |
+| `notifyButton` | `src/main.js` | Enable browser day reminders | used by `headerActions` |
+| `onLockClick` | `src/main.js` | Ends the session, or focuses the password field | used by `lockButton` |
+| `navButton` | `src/main.js` | Previous/next month buttons | calls `goToMonth` |
+| `goToMonth` | `src/main.js` | Shift displayed month and reload notes | used by `navButton`, `onDocumentKey` |
+| `onDocumentKey` | `src/main.js` | Escape closes the day; arrows change month | page keydown |
 | Netlify function | `netlify/functions/api.js:4` | Production `/api/*` entry using Netlify Blobs | calls `handleRequest` |

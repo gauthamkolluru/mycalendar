@@ -31,6 +31,21 @@ export function weekdayLabels() {
   return WEEKDAYS;
 }
 
+export function monthNavDelta(event) {
+  if (event.altKey || event.ctrlKey || event.metaKey) return 0;
+  if (isEditableTarget(event.target)) return 0;
+  if (event.key === "ArrowRight") return 1;
+  if (event.key === "ArrowLeft") return -1;
+  return 0;
+}
+
+function isEditableTarget(target) {
+  if (!target) return false;
+  const tag = String(target.tagName || "").toUpperCase();
+  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return true;
+  return Boolean(target.isContentEditable);
+}
+
 export async function api(path, options = {}) {
   const response = await fetch(path, {
     credentials: "same-origin",

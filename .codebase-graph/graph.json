@@ -421,24 +421,38 @@
    "exported": true
   },
   {
+   "id": "function:src/client.js:monthNavDelta",
+   "type": "function",
+   "name": "monthNavDelta",
+   "path": "src/client.js:34",
+   "exported": true
+  },
+  {
+   "id": "function:src/client.js:isEditableTarget",
+   "type": "function",
+   "name": "isEditableTarget",
+   "path": "src/client.js:42",
+   "exported": false
+  },
+  {
    "id": "function:src/client.js:api",
    "type": "function",
    "name": "api",
-   "path": "src/client.js:34",
+   "path": "src/client.js:49",
    "exported": true
   },
   {
    "id": "function:src/client.js:readBody",
    "type": "function",
    "name": "readBody",
-   "path": "src/client.js:49",
+   "path": "src/client.js:64",
    "exported": false
   },
   {
    "id": "function:src/client.js:errorMessage",
    "type": "function",
    "name": "errorMessage",
-   "path": "src/client.js:59",
+   "path": "src/client.js:74",
    "exported": true
   },
   {
@@ -451,140 +465,154 @@
    "id": "function:src/main.js:boot",
    "type": "function",
    "name": "boot",
-   "path": "src/main.js:37",
+   "path": "src/main.js:38",
    "exported": false
   },
   {
    "id": "function:src/main.js:loadMonth",
    "type": "function",
    "name": "loadMonth",
-   "path": "src/main.js:49",
+   "path": "src/main.js:50",
    "exported": false
   },
   {
    "id": "function:src/main.js:render",
    "type": "function",
    "name": "render",
-   "path": "src/main.js:66",
+   "path": "src/main.js:67",
    "exported": false
   },
   {
    "id": "function:src/main.js:sheet",
    "type": "function",
    "name": "sheet",
-   "path": "src/main.js:72",
+   "path": "src/main.js:73",
    "exported": false
   },
   {
    "id": "function:src/main.js:header",
    "type": "function",
    "name": "header",
-   "path": "src/main.js:82",
+   "path": "src/main.js:83",
    "exported": false
   },
   {
    "id": "function:src/main.js:lockButton",
    "type": "function",
    "name": "lockButton",
-   "path": "src/main.js:108",
+   "path": "src/main.js:109",
    "exported": false
   },
   {
    "id": "function:src/main.js:onLockClick",
    "type": "function",
    "name": "onLockClick",
-   "path": "src/main.js:130",
+   "path": "src/main.js:131",
    "exported": false
   },
   {
    "id": "function:src/main.js:navButton",
    "type": "function",
    "name": "navButton",
-   "path": "src/main.js:145",
+   "path": "src/main.js:146",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:goToMonth",
+   "type": "function",
+   "name": "goToMonth",
+   "path": "src/main.js:156",
    "exported": false
   },
   {
    "id": "function:src/main.js:weekdays",
    "type": "function",
    "name": "weekdays",
-   "path": "src/main.js:163",
+   "path": "src/main.js:166",
    "exported": false
   },
   {
    "id": "function:src/main.js:grid",
    "type": "function",
    "name": "grid",
-   "path": "src/main.js:181",
+   "path": "src/main.js:184",
    "exported": false
   },
   {
    "id": "function:src/main.js:dayCell",
    "type": "function",
    "name": "dayCell",
-   "path": "src/main.js:191",
+   "path": "src/main.js:194",
    "exported": false
   },
   {
    "id": "function:src/main.js:openDay",
    "type": "function",
    "name": "openDay",
-   "path": "src/main.js:217",
+   "path": "src/main.js:220",
    "exported": false
   },
   {
    "id": "function:src/main.js:loginDialog",
    "type": "function",
    "name": "loginDialog",
-   "path": "src/main.js:233",
+   "path": "src/main.js:236",
    "exported": false
   },
   {
    "id": "function:src/main.js:onLogin",
    "type": "function",
    "name": "onLogin",
-   "path": "src/main.js:265",
+   "path": "src/main.js:268",
    "exported": false
   },
   {
    "id": "function:src/main.js:noteDialog",
    "type": "function",
    "name": "noteDialog",
-   "path": "src/main.js:286",
+   "path": "src/main.js:289",
    "exported": false
   },
   {
    "id": "function:src/main.js:noteItem",
    "type": "function",
    "name": "noteItem",
-   "path": "src/main.js:355",
+   "path": "src/main.js:358",
    "exported": false
   },
   {
    "id": "function:src/main.js:onAddNote",
    "type": "function",
    "name": "onAddNote",
-   "path": "src/main.js:369",
+   "path": "src/main.js:372",
    "exported": false
   },
   {
    "id": "function:src/main.js:onRemoveNote",
    "type": "function",
    "name": "onRemoveNote",
-   "path": "src/main.js:389",
+   "path": "src/main.js:392",
    "exported": false
   },
   {
    "id": "function:src/main.js:formatHeading",
    "type": "function",
    "name": "formatHeading",
-   "path": "src/main.js:405",
+   "path": "src/main.js:408",
    "exported": false
   },
   {
    "id": "function:src/main.js:statusLine",
    "type": "function",
    "name": "statusLine",
-   "path": "src/main.js:415",
+   "path": "src/main.js:418",
+   "exported": false
+  },
+  {
+   "id": "function:src/main.js:onDocumentKey",
+   "type": "function",
+   "name": "onDocumentKey",
+   "path": "src/main.js:425",
    "exported": false
   },
   {
@@ -618,6 +646,12 @@
    "type": "file",
    "name": "calendar.test.js",
    "path": "tests/calendar.test.js"
+  },
+  {
+   "id": "file:tests/client.test.js",
+   "type": "file",
+   "name": "client.test.js",
+   "path": "tests/client.test.js"
   },
   {
    "id": "file:tests/validate.test.js",
@@ -1177,6 +1211,22 @@
   },
   {
    "source": "file:src/client.js",
+   "target": "function:src/client.js:monthNavDelta",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/client.js",
+   "target": "function:src/client.js:isEditableTarget",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/client.js",
    "target": "function:src/client.js:api",
    "type": "CONTAINS",
    "weight": 1,
@@ -1266,6 +1316,14 @@
   {
    "source": "file:src/main.js",
    "target": "function:src/main.js:navButton",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:goToMonth",
    "type": "CONTAINS",
    "weight": 1,
    "inferred": false,
@@ -1368,6 +1426,14 @@
    "metadata": {}
   },
   {
+   "source": "file:src/main.js",
+   "target": "function:src/main.js:onDocumentKey",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
    "source": "directory:tests",
    "target": "file:tests/api.test.js",
    "type": "CONTAINS",
@@ -1402,6 +1468,14 @@
   {
    "source": "directory:tests",
    "target": "file:tests/calendar.test.js",
+   "type": "CONTAINS",
+   "weight": 1,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "directory:tests",
+   "target": "file:tests/client.test.js",
    "type": "CONTAINS",
    "weight": 1,
    "inferred": false,
@@ -1701,7 +1775,63 @@
   },
   {
    "source": "function:src/main.js:navButton",
+   "target": "function:src/main.js:goToMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:goToMonth",
    "target": "function:lib/calendar.js:shiftMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:goToMonth",
+   "target": "function:src/main.js:loadMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:goToMonth",
+   "target": "function:src/main.js:render",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:onDocumentKey",
+   "target": "function:src/client.js:monthNavDelta",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:onDocumentKey",
+   "target": "function:src/main.js:goToMonth",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/main.js:onDocumentKey",
+   "target": "function:src/main.js:render",
+   "type": "CALLS",
+   "weight": 5,
+   "inferred": false,
+   "metadata": {}
+  },
+  {
+   "source": "function:src/client.js:monthNavDelta",
+   "target": "function:src/client.js:isEditableTarget",
    "type": "CALLS",
    "weight": 5,
    "inferred": false,
@@ -1898,6 +2028,34 @@
    "metadata": {
     "specifier": "../lib/calendar.js"
    }
+  },
+  {
+   "source": "file:tests/client.test.js",
+   "target": "package:vitest",
+   "type": "DEPENDS_ON",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "vitest"
+   }
+  },
+  {
+   "source": "file:tests/client.test.js",
+   "target": "file:src/client.js",
+   "type": "IMPORTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {
+    "specifier": "../src/client.js"
+   }
+  },
+  {
+   "source": "file:tests/client.test.js",
+   "target": "function:src/client.js:monthNavDelta",
+   "type": "TESTS",
+   "weight": 3,
+   "inferred": false,
+   "metadata": {}
   },
   {
    "source": "file:tests/validate.test.js",

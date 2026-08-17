@@ -102,12 +102,17 @@
   },
   {
    "id": "community:2",
-   "text": "Cluster of 2 related nodes.",
+   "text": "Month navigation: shiftMonth, header buttons, and left/right arrow keys.",
    "source_nodes": [
     "function:lib/calendar.js:shiftMonth",
-    "function:src/main.js:navButton"
+    "function:src/client.js:monthNavDelta",
+    "function:src/client.js:isEditableTarget",
+    "function:src/main.js:navButton",
+    "function:src/main.js:goToMonth",
+    "function:src/main.js:onDocumentKey",
+    "file:tests/client.test.js"
    ],
-   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "commit_sha": "99395d54db61f0d39956eec3752aedd3d25715a9",
    "summary_version": 1,
    "enriched": true
   },
@@ -638,6 +643,26 @@
    "enriched": false
   },
   {
+   "id": "function:src/client.js:monthNavDelta",
+   "text": "Maps left/right arrows to a month step, and ignores typing targets and modifier chords.",
+   "source_nodes": [
+    "function:src/client.js:monthNavDelta"
+   ],
+   "commit_sha": "99395d54db61f0d39956eec3752aedd3d25715a9",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "function:src/client.js:isEditableTarget",
+   "text": "True when the event target is an input, textarea, select, or contenteditable.",
+   "source_nodes": [
+    "function:src/client.js:isEditableTarget"
+   ],
+   "commit_sha": "99395d54db61f0d39956eec3752aedd3d25715a9",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
    "id": "function:src/client.js:api",
    "text": "api",
    "source_nodes": [
@@ -739,13 +764,23 @@
   },
   {
    "id": "function:src/main.js:navButton",
-   "text": "navButton",
+   "text": "Previous/next month buttons that call goToMonth.",
    "source_nodes": [
     "function:src/main.js:navButton"
    ],
-   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "commit_sha": "99395d54db61f0d39956eec3752aedd3d25715a9",
    "summary_version": 1,
-   "enriched": false
+   "enriched": true
+  },
+  {
+   "id": "function:src/main.js:goToMonth",
+   "text": "Shifts the displayed month, reloads notes when signed in, and repaints.",
+   "source_nodes": [
+    "function:src/main.js:goToMonth"
+   ],
+   "commit_sha": "99395d54db61f0d39956eec3752aedd3d25715a9",
+   "summary_version": 1,
+   "enriched": true
   },
   {
    "id": "function:src/main.js:weekdays",
@@ -868,6 +903,16 @@
    "enriched": false
   },
   {
+   "id": "function:src/main.js:onDocumentKey",
+   "text": "Escape closes the selected day; left/right arrows change the month.",
+   "source_nodes": [
+    "function:src/main.js:onDocumentKey"
+   ],
+   "commit_sha": "99395d54db61f0d39956eec3752aedd3d25715a9",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
    "id": "function:tests/api.test.js:request",
    "text": "request",
    "source_nodes": [
@@ -886,6 +931,16 @@
    "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
    "summary_version": 1,
    "enriched": false
+  },
+  {
+   "id": "file:tests/client.test.js",
+   "text": "Tests that left/right arrows step months and stay with the caret while typing.",
+   "source_nodes": [
+    "file:tests/client.test.js"
+   ],
+   "commit_sha": "99395d54db61f0d39956eec3752aedd3d25715a9",
+   "summary_version": 1,
+   "enriched": true
   }
  ]
 }

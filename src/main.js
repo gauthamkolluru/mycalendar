@@ -9,6 +9,7 @@ import { logger } from "../lib/logger.js";
 import {
   api,
   errorMessage,
+  monthNavDelta,
   monthTitle,
   weekdayLabels,
 } from "./client.js";
@@ -201,16 +202,18 @@ function navButton(label, text, delta) {
   button.className = "nav";
   button.setAttribute("aria-label", label);
   button.textContent = text;
-  button.addEventListener("click", async () => {
-    const next = shiftMonth(state.year, state.month, delta);
-    state.year = next.year;
-    state.month = next.month;
-    state.selected = null;
-    state.status = "";
-    if (state.authed) await loadMonth();
-    render();
-  });
+  button.addEventListener("click", () => goToMonth(delta));
   return button;
+}
+
+async function goToMonth(delta) {
+  const next = shiftMonth(state.year, state.month, delta);
+  state.year = next.year;
+  state.month = next.month;
+  state.selected = null;
+  state.status = "";
+  if (state.authed) await loadMonth();
+  render();
 }
 
 function weekdays() {
@@ -475,9 +478,16 @@ function statusLine(text) {
   return p;
 }
 
-document.addEventListener("keydown", (event) => {
+function onDocumentKey(event) {
   if (event.key === "Escape" && state.selected) {
     state.selected = null;
     render();
+    return;
   }
-});
+  const delta = monthNavDelta(event);
+  if (!delta) return;
+  event.preventDefault();
+  goToMonth(delta);
+}
+
+document.addEventListener("keydown", onDocumentKey);

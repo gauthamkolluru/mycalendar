@@ -1,10 +1,10 @@
 {
  "repository": "mycalendar",
- "commit_sha": "b9628ef2c694ad4b023799092496e8979972028f",
- "generated_at": "2026-08-16T18:03:07.000Z",
+ "commit_sha": "99395d54db61f0d39956eec3752aedd3d25715a9",
+ "generated_at": "2026-08-17T01:06:30.000Z",
  "summary_version": 1,
- "node_count": 102,
- "edge_count": 171,
+ "node_count": 107,
+ "edge_count": 186,
  "community_algorithm": "leiden",
  "community_count": 8,
  "retrieval_token_budget_default": 8000

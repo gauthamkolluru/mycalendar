@@ -94,7 +94,12 @@
    "parent": "community:repo",
    "members": [
     "function:lib/calendar.js:shiftMonth",
-    "function:src/main.js:navButton"
+    "function:src/client.js:monthNavDelta",
+    "function:src/client.js:isEditableTarget",
+    "function:src/main.js:navButton",
+    "function:src/main.js:goToMonth",
+    "function:src/main.js:onDocumentKey",
+    "file:tests/client.test.js"
    ],
    "algorithm": "leiden"
   },
