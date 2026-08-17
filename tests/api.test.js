@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { handleRequest, memoryBlobStore } from "../lib/api.js";
+import { MAX_TASK_LENGTH, MAX_TASKS_PER_DAY } from "../lib/validate.js";
 
 const ENV = {
   CALENDAR_GAUTHAM_PASSWORD: "desk-calendar",
@@ -177,6 +178,135 @@ describe("handleRequest", () => {
     expect(month.tasks["2025-10-31"].map((task) => task.text)).toEqual(["caramel"]);
   });
 
+  it("marks a note done and undone without changing its text", async () => {
+    const store = memoryBlobStore();
+    const token = await login(store);
+    const created = await handleRequest(
+      request("POST", "/api/tasks", {
+        body: { date: "2025-10-31", text: "candy" },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    const { task } = await created.json();
+
+    const done = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: task.id, done: true },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    expect(done.status).toBe(200);
+    const doneBody = await done.json();
+    expect(doneBody.task).toMatchObject({
+      id: task.id,
+      text: "candy",
+      done: true,
+    });
+
+    const listed = await handleRequest(
+      request("GET", "/api/tasks?month=2025-10", {
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    const month = await listed.json();
+    expect(month.tasks["2025-10-31"][0].done).toBe(true);
+
+    const undone = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: task.id, done: false },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    const undoneBody = await undone.json();
+    expect(undoneBody.task.done).toBe(false);
+    expect(undoneBody.task.text).toBe("candy");
+  });
+
+  it("rejects non-boolean done flags and empty updates", async () => {
+    const store = memoryBlobStore();
+    const token = await login(store);
+    const created = await handleRequest(
+      request("POST", "/api/tasks", {
+        body: { date: "2025-10-31", text: "candy" },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    const { task } = await created.json();
+
+    const junk = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: task.id, done: "yes" },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    const empty = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: task.id },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    expect(junk.status).toBe(400);
+    expect(empty.status).toBe(400);
+  });
+
+  it("keeps done when editing text, and blocks marking another person's note", async () => {
+    const store = memoryBlobStore();
+    const gautham = await login(store, ENV.CALENDAR_GAUTHAM_PASSWORD);
+    const wife = await login(store, ENV.CALENDAR_WIFE_PASSWORD);
+    const created = await handleRequest(
+      request("POST", "/api/tasks", {
+        body: { date: "2025-10-31", text: "candy" },
+        cookie: `cal_session=${gautham}`,
+      }),
+      ENV,
+      store,
+    );
+    const { task } = await created.json();
+    await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: task.id, done: true },
+        cookie: `cal_session=${gautham}`,
+      }),
+      ENV,
+      store,
+    );
+
+    const edited = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: task.id, text: "caramel" },
+        cookie: `cal_session=${gautham}`,
+      }),
+      ENV,
+      store,
+    );
+    const editedBody = await edited.json();
+    expect(editedBody.task).toMatchObject({ text: "caramel", done: true });
+
+    const cross = await handleRequest(
+      request("PATCH", "/api/tasks", {
+        body: { date: "2025-10-31", id: task.id, done: false },
+        cookie: `cal_session=${wife}`,
+      }),
+      ENV,
+      store,
+    );
+    expect(cross.status).toBe(404);
+  });
+
   it("rejects empty, missing, and unknown note updates", async () => {
     const store = memoryBlobStore();
     const token = await login(store);
@@ -245,7 +375,7 @@ describe("handleRequest", () => {
   it("caps notes per day", async () => {
     const store = memoryBlobStore();
     const token = await login(store);
-    for (let i = 0; i < 12; i += 1) {
+    for (let i = 0; i < MAX_TASKS_PER_DAY; i += 1) {
       const response = await handleRequest(
         request("POST", "/api/tasks", {
           body: { date: "2025-10-01", text: `note ${i}` },
@@ -265,6 +395,26 @@ describe("handleRequest", () => {
       store,
     );
     expect(extra.status).toBe(409);
+    expect(await extra.json()).toEqual({
+      error: `That day is full (${MAX_TASKS_PER_DAY} notes).`,
+    });
+  });
+
+  it("rejects notes over the character cap", async () => {
+    const store = memoryBlobStore();
+    const token = await login(store);
+    const oversized = await handleRequest(
+      request("POST", "/api/tasks", {
+        body: { date: "2025-10-01", text: "x".repeat(MAX_TASK_LENGTH + 1) },
+        cookie: `cal_session=${token}`,
+      }),
+      ENV,
+      store,
+    );
+    expect(oversized.status).toBe(400);
+    expect(await oversized.json()).toEqual({
+      error: `Keep notes to ${MAX_TASK_LENGTH} characters.`,
+    });
   });
 
   it("clears the session cookie on logout", async () => {

@@ -232,11 +232,24 @@ body {
   font-size: clamp(0.52rem, 1.05vw, 0.7rem);
   line-height: 1.25;
   color: var(--note);
-  white-space: pre-line;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+}
+
+.notes .note-line {
+  display: block;
+}
+
+.notes .note-line,
+.note-list li > span {
+  text-decoration: none;
+}
+
+.notes .note-line.done,
+.note-list li.done > span {
+  text-decoration: line-through;
 }
 
 .cell.outside .notes {
@@ -315,6 +328,7 @@ body {
 
 .panel .close,
 .panel .edit,
+.panel .done-toggle,
 .panel .remove {
   background: transparent;
   color: var(--ink);
@@ -336,13 +350,15 @@ body {
   flex-shrink: 0;
 }
 
-.panel .edit {
+.panel .edit,
+.panel .done-toggle {
   display: grid;
   place-items: center;
   line-height: 0;
 }
 
-.panel .edit svg {
+.panel .edit svg,
+.panel .done-toggle svg {
   width: 0.95rem;
   height: 0.95rem;
   fill: none;
@@ -350,6 +366,10 @@ body {
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.panel .done-toggle.on svg {
+  stroke-width: 2.4;
 }
 
 .panel .remove {
@@ -386,8 +406,14 @@ body {
 }
 
 .note-list .holiday,
-.note-list .empty {
+.note-list .empty,
+.cap-note {
   color: var(--note);
+}
+
+.cap-note {
+  margin: 0;
+  font-size: 0.95rem;
 }
 
 .status {

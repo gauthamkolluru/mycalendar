@@ -93,6 +93,10 @@ describe("reminder copy", () => {
     expect(hasReminderEvents([], "")).toBe(false);
     expect(hasReminderEvents([{ text: "x" }], "")).toBe(true);
     expect(hasReminderEvents([], "Easter")).toBe(true);
+    expect(reminderLines([{ text: "Done", done: true }, { text: "Open" }])).toEqual(
+      ["Open"],
+    );
+    expect(hasReminderEvents([{ text: "Done", done: true }], "")).toBe(false);
   });
 
   it("scopes the sent marker by user and date", () => {

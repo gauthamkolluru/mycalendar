@@ -5,6 +5,7 @@ import {
   shiftMonth,
   todayParts,
 } from "../lib/calendar.js";
+import { MAX_TASK_LENGTH, MAX_TASKS_PER_DAY } from "../lib/validate.js";
 import { logger } from "../lib/logger.js";
 import {
   api,
@@ -25,6 +26,8 @@ const BELL_ICON =
   '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 17h12l-1.2-1.2a2 2 0 0 1-.6-1.4V10a4.2 4.2 0 0 0-8.4 0v4.4a2 2 0 0 1-.6 1.4L6 17Z"/><path d="M10 17a2 2 0 0 0 4 0"/><path d="M12 4v1.2"/></svg>';
 const PENCIL_ICON =
   '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20l1-4.2L16.6 4.2a1.8 1.8 0 0 1 2.5 0l.7.7a1.8 1.8 0 0 1 0 2.5L8.2 19.1 4 20z"/><path d="M14 6.8l3.2 3.2"/></svg>';
+const CHECK_ICON =
+  '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l5 5L19 7"/></svg>';
 const today = todayParts();
 const state = {
   year: today.year,
@@ -266,9 +269,19 @@ function dayCell(cell, todayIso) {
   notes.className = "notes";
   const holiday = holidayName(cell.iso);
   const tasks = state.tasks[cell.iso] || [];
-  const lines = tasks.map((task) => task.text);
-  if (holiday) lines.push(holiday);
-  notes.textContent = lines.join("\n");
+  for (const task of tasks) {
+    const line = document.createElement("span");
+    line.className = "note-line";
+    if (task.done) line.classList.add("done");
+    line.textContent = task.text;
+    notes.append(line);
+  }
+  if (holiday) {
+    const line = document.createElement("span");
+    line.className = "note-line";
+    line.textContent = holiday;
+    notes.append(line);
+  }
 
   button.append(number, notes);
   button.addEventListener("click", () => openDay(cell));
@@ -390,21 +403,29 @@ function noteDialog() {
     list.append(empty);
   }
 
-  const form = document.createElement("form");
-  form.addEventListener("submit", onSubmitNote);
-  const input = document.createElement("input");
-  input.id = "note-input";
-  input.name = "text";
-  input.maxLength = 280;
-  input.placeholder = state.editing ? "Edit note" : "Write a note";
-  input.autocomplete = "off";
-  if (state.editing) input.value = state.editing.text;
-  const add = document.createElement("button");
-  add.type = "submit";
-  add.textContent = state.editing ? "Save" : "Add";
-  form.append(input, add);
-
-  dialog.append(heading, close, list, form);
+  const dayFull = !state.editing && tasks.length >= MAX_TASKS_PER_DAY;
+  if (dayFull) {
+    const full = document.createElement("p");
+    full.className = "cap-note";
+    full.textContent = `That day is full (${MAX_TASKS_PER_DAY} notes).`;
+    dialog.append(heading, close, list, full);
+  } else {
+    const form = document.createElement("form");
+    form.addEventListener("submit", onSubmitNote);
+    const input = document.createElement("input");
+    input.id = "note-input";
+    input.name = "text";
+    input.maxLength = MAX_TASK_LENGTH;
+    input.placeholder = state.editing ? "Edit note" : "Write a note";
+    input.title = `Up to ${MAX_TASK_LENGTH} characters`;
+    input.autocomplete = "off";
+    if (state.editing) input.value = state.editing.text;
+    const add = document.createElement("button");
+    add.type = "submit";
+    add.textContent = state.editing ? "Save" : "Add";
+    form.append(input, add);
+    dialog.append(heading, close, list, form);
+  }
   if (state.status) dialog.append(statusLine(state.status));
   scrim.append(dialog);
   return scrim;
@@ -414,6 +435,7 @@ function noteItem(task) {
   const item = document.createElement("li");
   const editing = state.editing?.id === task.id;
   if (editing) item.classList.add("editing");
+  if (task.done) item.classList.add("done");
   const text = document.createElement("span");
   text.textContent = task.text;
   const actions = document.createElement("div");
@@ -424,13 +446,21 @@ function noteItem(task) {
   edit.setAttribute("aria-label", editing ? "Cancel edit" : "Edit note");
   edit.innerHTML = PENCIL_ICON;
   edit.addEventListener("click", () => startEdit(task));
+  const done = document.createElement("button");
+  done.type = "button";
+  done.className = "done-toggle";
+  if (task.done) done.classList.add("on");
+  done.setAttribute("aria-pressed", task.done ? "true" : "false");
+  done.setAttribute("aria-label", task.done ? "Mark note not done" : "Mark note done");
+  done.innerHTML = CHECK_ICON;
+  done.addEventListener("click", () => onToggleDone(task));
   const remove = document.createElement("button");
   remove.type = "button";
   remove.className = "remove";
   remove.setAttribute("aria-label", "Remove note");
   remove.textContent = "×";
   remove.addEventListener("click", () => onRemoveNote(task));
-  actions.append(edit, remove);
+  actions.append(edit, done, remove);
   item.append(text, actions);
   return item;
 }
@@ -483,6 +513,30 @@ async function onSubmitNote(event) {
   render();
   const input = document.getElementById("note-input");
   if (input) input.focus();
+}
+
+async function onToggleDone(task) {
+  const done = task.done !== true;
+  const previous = state.tasks[task.date] || [];
+  state.tasks[task.date] = previous.map((item) =>
+    item.id === task.id ? { ...item, done } : item,
+  );
+  state.status = "";
+  render();
+  const result = await api("/api/tasks", {
+    method: "PATCH",
+    body: JSON.stringify({ date: task.date, id: task.id, done }),
+  });
+  if (!result.ok) {
+    state.tasks[task.date] = previous;
+    state.status = errorMessage(result, "Could not update that note.");
+    log.warn("task_done_failed", { status: result.status });
+    render();
+    return;
+  }
+  await loadMonth();
+  reminders.refresh();
+  render();
 }
 
 async function onRemoveNote(task) {

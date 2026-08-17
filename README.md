@@ -8,6 +8,7 @@ Hosting uses the same Netlify account as [thegauthams.com](https://thegauthams.c
 
 - The page is the month. Other-month dates are faded.
 - Click a square to add or remove notes.
+- Each day holds up to **24 notes**. Each note is up to **1000 characters**. Those are app limits so a day still reads like paper; they are not Netlify free-plan quotas.
 - Use `‹` `›` to turn the page.
 - Sign in with your password. Each person sees only their own notes.
 - After sign-in, use the bell to allow browser reminders. At **11:00 America/New_York** (Eastern, DST-aware), the open tab notifies you if today has notes or a holiday.

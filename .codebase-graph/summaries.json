@@ -28,7 +28,7 @@
   },
   {
    "id": "community:0",
-   "text": "Notes API, session auth, calendar UI, and tests — including edit-in-place of a day's notes.",
+   "text": "Notes API, session auth, calendar UI, and tests \u2014 including edit-in-place and marking a day's notes done.",
    "source_nodes": [
     "file:lib/api.js",
     "function:lib/api.js:handleRequest",
@@ -56,8 +56,11 @@
     "function:lib/store.js:readMonth",
     "function:lib/store.js:writeMonth",
     "file:lib/validate.js",
+    "constant:lib/validate.js:MAX_TASKS_PER_DAY",
+    "constant:lib/validate.js:MAX_TASK_LENGTH",
     "function:lib/validate.js:validateIsoDate",
     "function:lib/validate.js:validateTaskText",
+    "function:lib/validate.js:validateTaskDone",
     "function:lib/validate.js:parseYearMonth",
     "file:netlify/functions/api.js",
     "file:src/client.js",
@@ -78,19 +81,24 @@
     "function:src/main.js:noteItem",
     "function:lib/api.js:updateTask",
     "function:src/main.js:onSubmitNote",
+    "function:src/main.js:onToggleDone",
     "function:src/main.js:onRemoveNote",
     "file:tests/api.test.js",
     "function:tests/api.test.js:login",
     "file:tests/auth.test.js",
     "file:tests/calendar.test.js",
     "file:tests/validate.test.js",
+    "file:lib/reminders.js",
+    "function:lib/reminders.js:reminderLines",
+    "file:tests/reminders.test.js",
+    "file:src/styles.css",
     "package:node:crypto",
     "package:@netlify/blobs",
     "package:vitest",
     "feature:day-notes",
     "api_endpoint:api"
    ],
-   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1,
    "enriched": true
   },
@@ -608,14 +616,44 @@
    "enriched": false
   },
   {
+   "id": "constant:lib/validate.js:MAX_TASK_LENGTH",
+   "text": "App cap of 1000 characters per note, not a Netlify quota.",
+   "source_nodes": [
+    "constant:lib/validate.js:MAX_TASK_LENGTH"
+   ],
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "constant:lib/validate.js:MAX_TASKS_PER_DAY",
+   "text": "App cap of 24 notes per day, not a Netlify quota.",
+   "source_nodes": [
+    "constant:lib/validate.js:MAX_TASKS_PER_DAY"
+   ],
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
    "id": "function:lib/validate.js:validateTaskText",
-   "text": "validateTaskText",
+   "text": "Trims note text and rejects empty or over-1000-character notes.",
    "source_nodes": [
     "function:lib/validate.js:validateTaskText"
    ],
-   "commit_sha": "a7fb5afe432d158b9284fd83ab662b551ea1c100",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1,
-   "enriched": false
+   "enriched": true
+  },
+  {
+   "id": "function:lib/validate.js:validateTaskDone",
+   "text": "Accepts only boolean done flags so notes cannot be marked done with junk values.",
+   "source_nodes": [
+    "function:lib/validate.js:validateTaskDone"
+   ],
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
+   "summary_version": 1,
+   "enriched": true
   },
   {
    "id": "function:lib/validate.js:parseYearMonth",
@@ -849,21 +887,21 @@
   },
   {
    "id": "function:src/main.js:noteDialog",
-   "text": "Centered notes panel: list, pencil edit, and add/save field.",
+   "text": "Centered notes panel: list, pencil edit, add/save field, and the 24-note day cap.",
    "source_nodes": [
     "function:src/main.js:noteDialog"
    ],
-   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1,
    "enriched": true
   },
   {
    "id": "function:src/main.js:noteItem",
-   "text": "One note row with edit (pencil) and remove actions.",
+   "text": "One note row with edit, done (tick), and remove actions.",
    "source_nodes": [
     "function:src/main.js:noteItem"
    ],
-   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1,
    "enriched": true
   },
@@ -903,7 +941,7 @@
    "source_nodes": [
     "function:src/main.js:onDocumentKey"
    ],
-   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1,
    "enriched": true
   },
@@ -939,12 +977,12 @@
   },
   {
    "id": "function:lib/api.js:updateTask",
-   "text": "Replaces a day's note text for the signed-in user.",
+   "text": "Updates a day's note text and/or done flag for the signed-in user.",
    "source_nodes": [
     "function:lib/api.js:updateTask"
    ],
    "enriched": true,
-   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1
   },
   {
@@ -954,7 +992,7 @@
     "function:src/main.js:closeDay"
    ],
    "enriched": true,
-   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1
   },
   {
@@ -964,7 +1002,7 @@
     "function:src/main.js:startEdit"
    ],
    "enriched": true,
-   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1
   },
   {
@@ -974,7 +1012,7 @@
     "function:src/main.js:onSubmitNote"
    ],
    "enriched": true,
-   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1
   },
   {
@@ -983,7 +1021,7 @@
    "source_nodes": [
     "file:AGENTS.md"
    ],
-   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1,
    "enriched": true
   },
@@ -993,7 +1031,57 @@
    "source_nodes": [
     "file:CLAUDE.md"
    ],
-   "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "function:src/main.js:onToggleDone",
+   "text": "Toggles a note done or not done immediately, then persists the flag.",
+   "source_nodes": [
+    "function:src/main.js:onToggleDone"
+   ],
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "function:lib/reminders.js:reminderLines",
+   "text": "Builds reminder copy from open notes and holidays, skipping notes marked done.",
+   "source_nodes": [
+    "function:lib/reminders.js:reminderLines"
+   ],
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "file:lib/reminders.js",
+   "text": "Eastern-time reminder helpers for today's calendar events.",
+   "source_nodes": [
+    "file:lib/reminders.js"
+   ],
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "file:src/styles.css",
+   "text": "Paper calendar layout, including strikethrough for notes marked done.",
+   "source_nodes": [
+    "file:src/styles.css"
+   ],
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
+   "summary_version": 1,
+   "enriched": true
+  },
+  {
+   "id": "file:tests/reminders.test.js",
+   "text": "Tests Eastern reminder timing and copy, including skipping done notes.",
+   "source_nodes": [
+    "file:tests/reminders.test.js"
+   ],
+   "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
    "summary_version": 1,
    "enriched": true
   }

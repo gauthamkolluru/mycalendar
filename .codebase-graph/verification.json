@@ -1,7 +1,7 @@
 {
  "passed": true,
- "generated_at": "2026-08-17T01:36:50.681Z",
- "commit_sha": "4f64627ef575c57b6009a7d7740d4e1ba5924a58",
+ "generated_at": "2026-08-17T02:09:00.000Z",
+ "commit_sha": "d24cd43da3a6854ef8dd81d0c668c9b87efce0a4",
  "checks": {
   "paths_exist": true,
   "no_dangling_edges": true
@@ -9,8 +9,8 @@
  "missing_paths": [],
  "dangling_edges": [],
  "coverage": {
-  "source_files": 16,
-  "nodes": 112,
-  "edges": 204
+  "source_files": 20,
+  "nodes": 120,
+  "edges": 229
  }
 }

@@ -4,6 +4,7 @@ import {
   MAX_TASKS_PER_DAY,
   parseYearMonth,
   validateIsoDate,
+  validateTaskDone,
   validateTaskText,
 } from "../lib/validate.js";
 
@@ -39,13 +40,26 @@ describe("validateTaskText", () => {
     expect(validateTaskText("").ok).toBe(false);
     expect(validateTaskText("   ").ok).toBe(false);
     expect(validateTaskText(null).ok).toBe(false);
-    expect(validateTaskText("x".repeat(MAX_TASK_LENGTH + 1)).ok).toBe(false);
+    expect(validateTaskText("x".repeat(MAX_TASK_LENGTH + 1))).toEqual({
+      ok: false,
+      error: `Keep notes to ${MAX_TASK_LENGTH} characters.`,
+    });
     expect(validateTaskText("x".repeat(MAX_TASK_LENGTH)).ok).toBe(true);
   });
 
   it("keeps markup as plain text instead of interpreting it", () => {
     const payload = "<script>alert(1)</script>";
     expect(validateTaskText(payload)).toEqual({ ok: true, text: payload });
+  });
+});
+
+describe("validateTaskDone", () => {
+  it("accepts only real booleans", () => {
+    expect(validateTaskDone(true)).toEqual({ ok: true, done: true });
+    expect(validateTaskDone(false)).toEqual({ ok: true, done: false });
+    expect(validateTaskDone("true").ok).toBe(false);
+    expect(validateTaskDone(1).ok).toBe(false);
+    expect(validateTaskDone(null).ok).toBe(false);
   });
 });
 
@@ -62,7 +76,8 @@ describe("parseYearMonth", () => {
 });
 
 describe("limits", () => {
-  it("caps how many notes a day can hold", () => {
-    expect(MAX_TASKS_PER_DAY).toBe(12);
+  it("caps note length and how many notes a day can hold", () => {
+    expect(MAX_TASK_LENGTH).toBe(1000);
+    expect(MAX_TASKS_PER_DAY).toBe(24);
   });
 });
